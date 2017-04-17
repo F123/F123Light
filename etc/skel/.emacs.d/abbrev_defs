@@ -1,0 +1,87 @@
+;;-*-coding: utf-8;-*-
+(define-abbrev-table 'Buffer-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+    ("appendmenu" "menu->Appnd(menu, wxString(\"label\"));" nil 0)
+    ("evt-getid" "int id = evt->GetId();" nil 0)
+    ("ifborland" "#ifdef __BORLANDC__
+#pragma hdrstop
+#endif
+
+" nil 0)
+    ("menu->append" "menu->Appnd(menu, wxString(\"label\"));" nil 0)
+    ("wxboxsizer" "wxBoxSizer *Sizer = new wxBoxSizer(wxVERTICAL);" nil 0)
+    ("wxbutton" "wxButton *btn = new wxButton(parent, wxID_ANY, wxString(\"Button\"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxString(\"button\"));" nil 0)
+    ("wxcheckbox" "wxCheckBox *chk = new wxCheckBox(parent, wxID_ANY, wxString(\"label\"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxString(\"checkBox\"));" nil 0)
+    ("wxcombo" "wxComboBox *cbo = new wxComboBox(parent, wxID_ANY, wxString(\"\"), wxDefaultPosition, wxDefaultSize, 0, NULL, 0, wxDefaultValidator, wxString(\"comboBox\"));" nil 0)
+    ("wxcombobox" "wxComboBox *cbo = new wxComboBox(parent, wxID_ANY, wxString(\"\"), wxDefaultPosition, wxDefaultSize, 0, NULL, 0, wxDefaultValidator, wxString(\"comboBox\"));" nil 0)
+    ("wxfgs" "wxFlexGridSizer *Sizer = new wxFlexGridSizer(rows, cols, vgap, hgap);" nil 0)
+    ("wxflexgridsizer" "wxFlexGridSizer *Sizer = new wxFlexGridSizer(rows, cols, vgap, hgap);" nil 0)
+    ("wxgroupbox" "wxStaticBox *sbx = new wxStaticBox(parent, wxID_ANY, wxString(\"Group\"), wxDefaultPosition, wxDefaultSize, 0, wxString(\"staticBox\"));" nil 0)
+    ("wxradio" "wxRadioButton *rbu = new wxRadioButton(parent, wxID_ANY, wxString(\"label\"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxString(\"radioButton\"));" nil 0)
+    ("wxradiobutton" "wxRadioButton *rbu = new wxRadioButton(parent, wxID_ANY, wxString(\"label\"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, wxString(\"radioButton\"));" nil 0)
+    ("wxspin" "wxSpinButton *spn = new wxSpinButton(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_HORIZONTAL, wxString\"spinButton\"));" nil 0)
+    ("wxspinbutton" "wxSpinButton *spn = new wxSpinButton(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_HORIZONTAL, wxString\"spinButton\"));" nil 0)
+    ("wxstatic++" "wxStaticText *lbl = new wxStaticText(parent, wxID_ANY, wxString(\"Label\"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT, wxString(\"staticText\"));" nil 0)
+    ("wxstaticbox" "wxStaticBox *sbx = new wxStaticBox(parent, wxID_ANY, wxString(\"Group\"), wxDefaultPosition, wxDefaultSize, 0, wxString(\"staticBox\"));" nil 0)
+    ("wxstatictext" "wxStaticText *lbl = new wxStaticText(parent, wxID_ANY, wxString(\"Label\"), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT, wxString(\"staticText\"));" nil 0)
+    ("wxtext" "wxTextCtrl *txt = new wxTextCtrl(parent, wxID_ANY, wxString(\"defaultText\"), wxDefaultPosition, wxDefaultSize, wxTE_LEFT, wxDefaultValidator, wxString(\"textCtrl\"));" nil 0)
+    ("wxtextctrl" "wxTextCtrl *txt = new wxTextCtrl(parent, wxID_ANY, wxString(\"defaultText\"), wxDefaultPosition, wxDefaultSize, wxTE_LEFT, wxDefaultValidator, wxString(\"textCtrl\"));" nil 0)
+    ("wxtree" "wxTreeCtrl tcl = new wxTreeCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS, wxDefaultValidator, wxString(\"treeCtrl\"));" nil 0)
+    ("wxtreectrl" "wxTreeCtrl tcl = new wxTreeCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS, wxDefaultValidator, wxString(\"treeCtrl\"));" nil 0)
+   ))
+
+(define-abbrev-table 'calendar-mode-abbrev-table '())
+
+(define-abbrev-table 'comint-mode-abbrev-table '())
+
+(define-abbrev-table 'completion-list-mode-abbrev-table '())
+
+(define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())
+
+(define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
+
+(define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'fundamental-mode-abbrev-table '())
+
+(define-abbrev-table 'gfm-mode-abbrev-table '())
+
+(define-abbrev-table 'global-abbrev-table '())
+
+(define-abbrev-table 'lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'markdown-mode-abbrev-table
+  '(
+    ("arch" "[`Arch Linux`][arch]" nil 0)
+    ("debian" "[`Debian`][debian]" nil 0)
+    ("rpi" "[`Raspberry Pi`][rpi]" nil 0)
+    ("ubuntu" "[`Ubuntu`][ubuntu]" nil 0)
+   ))
+
+(define-abbrev-table 'messages-buffer-mode-abbrev-table '())
+
+(define-abbrev-table 'occur-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'occur-mode-abbrev-table '())
+
+(define-abbrev-table 'org-export-stack-mode-abbrev-table '())
+
+(define-abbrev-table 'org-mode-abbrev-table '())
+
+(define-abbrev-table 'outline-mode-abbrev-table '())
+
+(define-abbrev-table 'process-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'prog-mode-abbrev-table '())
+
+(define-abbrev-table 'special-mode-abbrev-table '())
+
+(define-abbrev-table 'tabulated-list-mode-abbrev-table '())
+
+(define-abbrev-table 'text-mode-abbrev-table
+  '(
+    ("thier" "their" nil 2)
+   ))
+
