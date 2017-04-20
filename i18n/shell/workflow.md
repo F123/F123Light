@@ -66,31 +66,32 @@ This reads all the `echo` commands which contain references to the `gettext` and
 
 Here is a simple example of the contents of a `.pot` file for a script which contains only one `echo` command:
 
-```
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-19 22:52+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 
-#: myscript:10
-#, sh-format
-msgid "Hello world: $PROGNAME"
-msgstr ""
-```
+
+	# SOME DESCRIPTIVE TITLE.
+	# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+	# This file is distributed under the same license as the PACKAGE package.
+	# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+	#
+	#, fuzzy
+	msgid ""
+	msgstr ""
+	"Project-Id-Version: PACKAGE VERSION\n"
+	"Report-Msgid-Bugs-To: \n"
+	"POT-Creation-Date: 2017-04-19 22:52+0100\n"
+	"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+	"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+	"Language-Team: LANGUAGE <LL@li.org>\n"
+	"Language: \n"
+	"MIME-Version: 1.0\n"
+	"Content-Type: text/plain; charset=UTF-8\n"
+	"Content-Transfer-Encoding: 8bit\n"
+	#
+	#: myscript:10
+	#, sh-format
+	msgid "Hello world: $PROGNAME"
+	msgstr ""
+
 
 In the above example there are values in upper-case at the top in the comments which should be filled out with the details of the package-name, and the author details etc.
 
