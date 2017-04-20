@@ -6,10 +6,10 @@ clean_up() {
 	un_mount_partitions ${WORKDIR}
 	remove_mount_points ${WORKDIR}
 
-if cat ${WORKDIR}/imgtool-mount-points | grep loop >/dev/null
-then
-	remove_loop_devices ${WORKDIR}
-fi
+	if cat ${WORKDIR}/imgtool-mount-points | grep loop >/dev/null
+	then
+		remove_loop_devices ${WORKDIR}
+	fi
 
 	rm ${WORKDIR}/imgtool-mount-points
 
