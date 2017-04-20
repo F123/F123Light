@@ -1,10 +1,7 @@
 
 * F123Pi to-do list
 
-
-** List after meeting of 17 April 2017
-
-* TODO Change beta to alpha (done)
 * TODO Put a README in the /home/f123 directory
 * TODO Put expand and resize scripts in either /home/f123 or in the PATH
+* Investigate how `Noobs` does automatic card expansion
 
