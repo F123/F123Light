@@ -185,3 +185,13 @@ So, for `myscript`, perhaps:
 				fr/myscript.fr.po (French)
 							pt_BR/myscript.pt_BR.po (Brazilian Portuguese)
 
+
+## License
+
+This document is licensed under the creativecommons.org, 'Attribution-NonCommercial-ShareAlike 4.0 
+International' license:
+
+https://creativecommons.org/licenses/by-nc-sa/4.0/ 
+
+2017 Mike Ray, <mike.ray@btinternet.com>
+
