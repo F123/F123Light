@@ -38,7 +38,5 @@ multipath-tools (AUR, for kpartx)
 * Install our issue file to /etc
 * Clear history for both new user and root
 * Make sure there are no keys in user's .ssh/known_hosts
-* Install imgtool, imgtool.lib, backupf123pi and bootstrapf123pi when finished
-* Install expand and resize scripts to user home
 * Install README to user home
 
