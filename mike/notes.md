@@ -11,7 +11,7 @@ ntp (enable service)
 espeak
 tcl
 emacs-nox (might change to emacs when stumpwm installed)
-tcl (emacs dependency)
+tclx (emacs dependency)
 dosfstools (for mkfs.vfat
 arch-install-scripts (for pacstrap)
 alsa-utils
