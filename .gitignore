@@ -2,9 +2,4 @@
 res
 *~
 
-# Arch packages
-*.pkg.tar.xz
-
-# gzips
-*.gz
 
