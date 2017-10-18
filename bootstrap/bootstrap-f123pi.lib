@@ -1,5 +1,0 @@
-
-out() { printf "$1 $2\n" "${@:3}"; }
-error() { out "ERROR:" "$@"; } >&2
-die() { error "$@"; exit 1; }
-

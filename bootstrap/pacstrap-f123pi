@@ -1,0 +1,83 @@
+#!/bin/bash
+
+export TEXTDOMAIN=pacstrap-alarmpi
+#export TEXTDOMAINDIR=$PWD/locale
+export TEXTDOMAINDIR=/usr/local/share/locale
+
+. gettext.sh
+
+. ./pacstrap-f123pi.lib
+
+usage() {
+	echo "This is the pacstrap usage"
+}
+
+set -e
+
+msg=$(gettext "This script must be run with root privilages")
+(( EUID == 0 )) || die "$msg"
+
+[ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
+[ -z "${ROOTPWD}" ] && ROOTPWD=root
+[ -z "${USERNAME}" ] && USERNAME=alarm
+[ -z "${USERPWD}" ] && USERPWD=alarm
+
+directory=0
+packagelist=
+
+while getopts ':dhl:' flag
+do
+case $flag in
+d)
+directory=1
+;;
+h)
+usage
+exit 0
+;;
+l)
+packagelist=$OPTARG
+;;
+:)
+msg=$(gettext "Option requires an argument")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
+;;
+?)
+msg=$(gettext "Invalid option")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
+;;
+esac
+done
+
+shift $(( OPTIND - 1 ))
+
+(( $# )) || die "No root directory specified"
+
+newroot=$1; shift
+
+[[ -z "${packagelist}" ]] && die "No package list supplied"
+[[ -f "${packagelist}" ]] || die "Package list ${packagelist} does not exist"
+[[ -r "${packagelist}" ]] || die "Package list ${packagelist} is not readable"
+
+
+mapfile -t packages < "${packagelist}"
+
+[[ -d $newroot ]] || die "%s is not a directory" "$newroot"
+if ! mountpoint -q "${newroot}" && (( ! directory )); then
+die '%s is not a mountpoint!' "$newroot"
+fi
+
+
+if (( directory )) ; then
+echo "Pacstrapping in ${newroot} directory"
+pacstrap -d "${newroot}" --needed --noprogressbar "${packages[@]}"
+else
+echo "Pacstrapping in ${newroot} mount-point"
+pacstrap "${newroot}" --needed --noprogressbar "${packages[@}"
+fi
+
+
+echo done
+
+exit 0
+

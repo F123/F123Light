@@ -6,26 +6,16 @@ export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
-. ./bootstrap-f123pi.lib
+. ./pacstrap-f123pi.lib
 
 usage() {
-	echo "This is the usage"
+	echo "This is the bootstrap usage"
 }
 
 set -e
 
-msg=$(gettext "This script must be run with root privilages")
-(( EUID == 0 )) || die "$msg"
-
-[ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
-[ -z "${ROOTPWD}" ] && ROOTPWD=root
-[ -z "${USERNAME}" ] && USERNAME=alarm
-[ -z "${USERPWD}" ] && USERPWD=alarm
-
-directory=0
-packagelist=
-
-while getopts ':dhl:' flag
+#while getopts ':dho:p:r:u:' flag
+while getopts ':dh' flag
 do
 case $flag in
 d)
@@ -35,8 +25,9 @@ h)
 usage
 exit 0
 ;;
-l)
-packagelist=$OPTARG
+:)
+msg=$(gettext "Option requires an argument")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
 ;;
 ?)
 msg=$(gettext "Invalid option")
@@ -51,27 +42,37 @@ shift $(( OPTIND - 1 ))
 
 newroot=$1; shift
 
-[[ -z "${packagelist}" ]] && die "No package list supplied"
-[[ -f "${packagelist}" ]] || die "Package list ${packagelist} does not exist"
-[[ -r "${packagelist}" ]] || die "Package list ${packagelist} is not readable"
+
+# Basic alarmpi packages
+./pacstrap-f123pi -l package_lists/alarmpi.base.pkglist -d "${newroot}"
+
+# Basic f123pi packages
+./pacstrap-f123pi -l package_lists/f123pi.base.pkglist -d "${root}"
+
+# Console accessibility related packages
+./pacstrap-f123pi -l package_lists/alarmpi.a11y.pkglist -d "${newroot}"
+
+# Development tools packages
+./pacstrap-f123pi -l ./package_lists/develtools.pkglist -d "${newroot}"
+
+#
+# Put extra calls to pacstrap-f123pi in here when more configurations are added.
+#
+# Such as package lists which contain desktop packages
+#
 
 
-mapfile -t packages < "${packagelist}"
+[ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
+[ -z "${ROOTPWD}" ] && ROOTPWD=root
+[ -z "${USERNAME}" ] && USERNAME=alarm
+[ -z "${USERPWD}" ] && USERPWD=alarm
 
-[[ -d $newroot ]] || die "%s is not a directory" "$newroot"
-if ! mountpoint -q "${newroot}" && (( ! directory )); then
-die '%s is not a mountpoint!' "$newroot"
-fi
+./config-base-f123pi -o "${HOSTNAME}" -r "${ROOTPWD}" -u "${USERNAME}" -p "${USERPWD}" -d "${newroot}"
 
+#
+# Put more calls to bespoke config scripts in here.
+#
+# Such as when desktop environments are added which need extra configuration
+#
 
-if (( directory )) ; then
-echo "Pacstrapping in ${newroot} directory"
-pacstrap -d "${newroot}" "${packages[@]}"
-else
-echo "Pacstrapping in ${newroot} mount-point"
-pacstrap "${newroot}" "${packages[@}"
-fi
-
-
-echo done
 

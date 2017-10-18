@@ -6,7 +6,7 @@ export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
-. ./bootstrap-f123pi.lib
+. ./pacstrap-f123pi.lib
 
 usage() {
 	echo "This is the usage"
@@ -48,6 +48,10 @@ ROOTPWD=${OPTARG}
 ;;
 u)
 USERNAME=${OPTARG}
+;;
+:)
+msg=$(gettext "Option requires an argument")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
 ;;
 ?)
 msg=$(gettext "Invalid option")
@@ -91,31 +95,15 @@ chroot "${newroot}" /bin/bash -c 'echo "SSHD: ALL" >> /etc/hosts.allow'
 # add dtparam=audio=on to /boot/config.txt
 chroot "${newroot}" /bin/bash -c "echo -e \"\n\ndtparam=audio=on\n\n\" >> /boot/config.txt"
 
+set_password "${newroot}" root "${ROOTPWD}"
 
-# set root password
-echo -e "ROOTPWD\nROOTPWD\n" | chroot "${newroot}" /usr/bin/passwd root
+add_user "${newroot}" "${USERNAME}"
+set_password "${newroot}" "${USERNAME}" "${USERPWD}"
 
-
-# add a user and set the password
-input="useradd -m -g users -G wheel,storage,power,uucp,audio -s /bin/bash \"${USERNAME}\""
-echo "${input}"
-chroot "${newroot}" /bin/bash -c "${input}"
-input="echo -e \"${USERPWD}\n${USERPWD}\n\" | passwd ${USERNAME}"
-echo "${input}"
-chroot "${newroot}" /bin/bash -c "${input}"
-
-
-# enable dhcpcd.service
-chroot "${newroot}" systemctl enable dhcpcd.service
-
-# enable sshd.service
-chroot "${newroot}" systemctl enable sshd.service
-
-# enable ntpd.service
-chroot "${newroot}" systemctl enable ntpd.service
-
-# Files for /etc/modules-load.d
-install -m0644 ./files/etc/modules-load.d/* "${newroot}"/etc/modules-load.d
+for SERVICE in dhcpcd ntpd sshd
+do
+	manage_service "${newroot}" enable "${SERVICE}"
+done
 
 # udev rule files
 install -m0644 ./files/etc/udev/rules.d/* "${newroot}"/etc/udev/rules.d
