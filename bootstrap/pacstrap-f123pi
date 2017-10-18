@@ -9,7 +9,8 @@ export TEXTDOMAINDIR=/usr/local/share/locale
 . ./pacstrap-f123pi.lib
 
 usage() {
-	echo "This is the pacstrap usage"
+	usg=$(gettext "pacstrap_usage")
+	echo -e "${usg}"
 }
 
 set -e
