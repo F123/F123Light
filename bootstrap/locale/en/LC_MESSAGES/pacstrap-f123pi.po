@@ -1,0 +1,71 @@
+# bootstrap-f123pi.
+# Copyright (C) 2017 Mike Ray
+# This file is distributed under the same license as the PACKAGE package.
+# Mike Ray <mike.ray@btinternet.com>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.0alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-18 23:31+0100\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Mike Ray <mike.ray@btinternet.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bootstrap-f123pi:12
+msgid "bootstrap_usage"
+msgstr ""
+"\\n"
+"Usage: bootstrap-f123pi [options]\\n"
+ "\\n"
+
+
+#: bootstrap-f123pi:30 pacstrap-f123pi:43 config-base-f123pi:54
+msgid "Option requires an argument"
+msgstr ""
+
+#: bootstrap-f123pi:34 pacstrap-f123pi:47 config-base-f123pi:58
+msgid "Invalid option"
+msgstr ""
+
+#: pacstrap-f123pi:12
+msgid "pacstrap_usage"
+msgstr ""
+
+#: pacstrap-f123pi:18 config-base-f123pi:18
+msgid "This script must be run with root privilages"
+msgstr ""
+
+#: pacstrap-f123pi.lib:16
+#, sh-format
+msgid "Add user ${username}"
+msgstr ""
+
+#: pacstrap-f123pi.lib:27
+#, sh-format
+msgid "Setting password for user ${username}"
+msgstr ""
+
+#: pacstrap-f123pi.lib:39
+#, sh-format
+msgid "Calling systemctl to ${operation} ${service} service"
+msgstr ""
+
+#: config-base-f123pi:12
+msgid "config_usage"
+msgstr ""
+
+#: config-base-f123pi:118
+#, sh-format
+msgid "$progname completed successfully"
+msgstr ""
+
+#: config-base-f123pi:119
+#, sh-format
+msgid "Size of installation in ${newroot} is now ${newrootsize}"
+msgstr ""

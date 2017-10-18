@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export TEXTDOMAIN=pacstrap-alarmpi
-#export TEXTDOMAINDIR=$PWD/locale
-export TEXTDOMAINDIR=/usr/local/share/locale
+export TEXTDOMAIN=pacstrap-f123pi
+export TEXTDOMAINDIR=$PWD/locale
+#export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
