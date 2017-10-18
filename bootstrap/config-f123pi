@@ -1,0 +1,131 @@
+#!/bin/bash
+
+export TEXTDOMAIN=pacstrap-alarmpi
+#export TEXTDOMAINDIR=$PWD/locale
+export TEXTDOMAINDIR=/usr/local/share/locale
+
+. gettext.sh
+
+. ./bootstrap-f123pi.lib
+
+usage() {
+	echo "This is the usage"
+}
+
+set -e
+
+msg=$(gettext "This script must be run with root privilages")
+(( EUID == 0 )) || die "$msg"
+
+
+[ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
+[ -z "${ROOTPWD}" ] && ROOTPWD=root
+[ -z "${USERNAME}" ] && USERNAME=alarm
+[ -z "${USERPWD}" ] && USERPWD=alarm
+
+
+directory=0
+
+
+while getopts ':dho:p:r:u:' flag
+do
+case $flag in
+d)
+directory=1
+;;
+h)
+usage
+exit 0
+;;
+o)
+HOSTNAME=${OPTARG}
+;;
+p)
+USERPWD=${OPTARG}
+;;
+r)
+ROOTPWD=${OPTARG}
+;;
+u)
+USERNAME=${OPTARG}
+;;
+?)
+msg=$(gettext "Invalid option")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
+;;
+esac
+done
+
+shift $(( OPTIND - 1 ))
+
+(( $# )) || die "No root directory specified"
+
+newroot=$1; shift
+
+
+[[ -d $newroot ]] || die "%s is not a directory" "$newroot"
+if ! mountpoint -q "${newroot}" && (( ! directory )); then
+die '%s is not a mountpoint!' "$newroot"
+fi
+
+
+cp /boot/*.bin "${newroot}"/boot
+cp /boot/*.dat "${newroot}"/boot
+cp /boot/*.elf "${newroot}"/boot
+
+chroot "${newroot}"/ mknod -m 600 /dev/console c 5 1
+chroot "${newroot}"/ mknod -m 666 /dev/null c 1 3
+chroot "${newroot}"/ mknod -m 666 /dev/zero c 1 5
+
+# set the host name
+input="echo \"${HOSTNAME}\" > /etc/hostname"
+echo "${input}"
+chroot "${newroot}" /bin/bash -c "${input}"
+
+# add root partition mount info to /etc/fstab
+chroot "${newroot}" /bin/bash -c 'echo -e "\n\n/dev/mmcblk0p1  /boot   vfat    defaults        0       0\n\n" >> /etc/fstab'
+
+# add line to /etc/hosts.allow to allow all hosts
+chroot "${newroot}" /bin/bash -c 'echo "SSHD: ALL" >> /etc/hosts.allow'
+
+# add dtparam=audio=on to /boot/config.txt
+chroot "${newroot}" /bin/bash -c "echo -e \"\n\ndtparam=audio=on\n\n\" >> /boot/config.txt"
+
+
+# set root password
+echo -e "ROOTPWD\nROOTPWD\n" | chroot "${newroot}" /usr/bin/passwd root
+
+
+# add a user and set the password
+input="useradd -m -g users -G wheel,storage,power,uucp,audio -s /bin/bash \"${USERNAME}\""
+echo "${input}"
+chroot "${newroot}" /bin/bash -c "${input}"
+input="echo -e \"${USERPWD}\n${USERPWD}\n\" | passwd ${USERNAME}"
+echo "${input}"
+chroot "${newroot}" /bin/bash -c "${input}"
+
+
+# enable dhcpcd.service
+chroot "${newroot}" systemctl enable dhcpcd.service
+
+# enable sshd.service
+chroot "${newroot}" systemctl enable sshd.service
+
+# enable ntpd.service
+chroot "${newroot}" systemctl enable ntpd.service
+
+# Files for /etc/modules-load.d
+install -m0644 ./files/etc/modules-load.d/* "${newroot}"/etc/modules-load.d
+
+# udev rule files
+install -m0644 ./files/etc/udev/rules.d/* "${newroot}"/etc/udev/rules.d
+
+# Root file system auto expansion
+#install -d "${newroot}"/usr/lib/raspi-config
+#install -m0755 ./files/usr/lib/raspi-config/init_resize.sh "${newroot}"/usr/lib/raspi-config
+
+
+newrootsize=$(du -hs "${newroot}" | cut -f1 -d' ')
+echo $(eval_gettext "\$progname completed successfully") ; echo
+echo $(eval_gettext "Size of installation in \${newroot} is now \${newrootsize}") ; echo
+

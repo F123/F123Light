@@ -1,0 +1,15 @@
+dialog
+emacs-nox
+espeak
+git
+json-c
+libnewt
+liburcu
+multipath-tools
+package-query
+parted
+tcl
+tclx
+tk
+yajl
+yaourt

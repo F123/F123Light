@@ -6,24 +6,72 @@ export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
-set -e
-progname=$0
+. ./bootstrap-f123pi.lib
 
-if [ `whoami` != 'root' ]; then
-	echo $(eval_gettext "Must be run as root, try: sudo \${progname}") ; echo
-	exit 1
+usage() {
+	echo "This is the usage"
+}
+
+set -e
+
+msg=$(gettext "This script must be run with root privilages")
+(( EUID == 0 )) || die "$msg"
+
+[ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
+[ -z "${ROOTPWD}" ] && ROOTPWD=root
+[ -z "${USERNAME}" ] && USERNAME=alarm
+[ -z "${USERPWD}" ] && USERPWD=alarm
+
+directory=0
+packagelist=
+
+while getopts ':dhl:' flag
+do
+case $flag in
+d)
+directory=1
+;;
+h)
+usage
+exit 0
+;;
+l)
+packagelist=$OPTARG
+;;
+?)
+msg=$(gettext "Invalid option")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
+;;
+esac
+done
+
+shift $(( OPTIND - 1 ))
+
+(( $# )) || die "No root directory specified"
+
+newroot=$1; shift
+
+[[ -z "${packagelist}" ]] && die "No package list supplied"
+[[ -f "${packagelist}" ]] || die "Package list ${packagelist} does not exist"
+[[ -r "${packagelist}" ]] || die "Package list ${packagelist} is not readable"
+
+
+mapfile -t packages < "${packagelist}"
+
+[[ -d $newroot ]] || die "%s is not a directory" "$newroot"
+if ! mountpoint -q "${newroot}" && (( ! directory )); then
+die '%s is not a mountpoint!' "$newroot"
 fi
 
-chroot_=$1
 
-shift
+if (( directory )) ; then
+echo "Pacstrapping in ${newroot} directory"
+pacstrap -d "${newroot}" "${packages[@]}"
+else
+echo "Pacstrapping in ${newroot} mount-point"
+pacstrap "${newroot}" "${packages[@}"
+fi
 
-./pacstrap-alarmpi "${chroot_}"
 
-./pacstrap-f123pi "${chroot_}" $@
-
-
-
-
-echo $(eval_gettext "\$progname completed successfully") ; echo
+echo done
 
