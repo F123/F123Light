@@ -1,0 +1,29 @@
+#!/bin/bash
+
+export TEXTDOMAIN=pacstrap-alarmpi
+#export TEXTDOMAINDIR=$PWD/locale
+export TEXTDOMAINDIR=/usr/local/share/locale
+
+. gettext.sh
+
+set -e
+progname=$0
+
+if [ `whoami` != 'root' ]; then
+	echo $(eval_gettext "Must be run as root, try: sudo \${progname}") ; echo
+	exit 1
+fi
+
+chroot_=$1
+
+shift
+
+./pacstrap-alarmpi "${chroot_}"
+
+./pacstrap-f123pi "${chroot_}" $@
+
+
+
+
+echo $(eval_gettext "\$progname completed successfully") ; echo
+
