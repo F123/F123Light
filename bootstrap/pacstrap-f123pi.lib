@@ -1,7 +1,8 @@
 
 
 usage() {
-	echo -e $(gettext "usage_")
+	scriptname=$0
+	echo -e $(gettext "Usage: \$scriptname")
 } >&2
 
 

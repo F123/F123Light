@@ -16,9 +16,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../bootstrap-f123pi:12
-msgid "usage_"
+msgid "Usage: $scriptname"
 msgstr ""
-"Usage: bootstrap-f123pi [ options ... ] { directory | mount-point }\\n\\n"
+"Usage: $scriptname [ options ... ] { directory | mount-point }\\n\\n"
 "Options:\\n\\n"
 "	-h\\n\\n"
 "	Show usage and exit.\\n\\n"
