@@ -1,18 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# F123 pacstrap-f123pi - Bootstrap an Arch image for the Raspberry Pi
+# Copyright (C) 2017 THE Mike Ray
+# This file is distributed under the same license as the f123pi package.
+# Mike Ray <mike.ray@btinternet.com>, 2017.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: 1.0.0\n"
 "POT-Creation-Date: 2017-10-19 03:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: English\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,8 +45,24 @@ msgstr ""
 
 #: ../bootstrap-f123pi:50
 msgid "Option requires an argument"
-msgstr "Bollox"
+msgstr ""
 
 #: ../bootstrap-f123pi:54
 msgid "Invalid option"
+msgstr ""
+
+
+#: ../pacstrap-f123pi.lib:28
+#, sh-format
+msgid "Add user ${username}"
+msgstr ""
+
+#: ../pacstrap-f123pi.lib:39
+#, sh-format
+msgid "Setting password for user ${username}"
+msgstr ""
+
+#: ../pacstrap-f123pi.lib:51
+#, sh-format
+msgid "Calling systemctl to ${operation} ${service} service"
 msgstr ""
