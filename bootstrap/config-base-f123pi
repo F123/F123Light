@@ -1,22 +1,16 @@
 #!/bin/bash
 
-export TEXTDOMAIN=pacstrap-alarmpi
-#export TEXTDOMAINDIR=$PWD/locale
-export TEXTDOMAINDIR=/usr/local/share/locale
+export TEXTDOMAIN=pacstrap-f123pi
+export TEXTDOMAINDIR=./locale
+#export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
 . ./pacstrap-f123pi.lib
 
-usage() {
-	usg=$(gettext "config_usage")
-	echo -e "${usg}"
-}
 
 set -e
 
-msg=$(gettext "This script must be run with root privilages")
-(( EUID == 0 )) || die "$msg"
 
 
 [ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
@@ -62,6 +56,9 @@ esac
 done
 
 shift $(( OPTIND - 1 ))
+
+msg=$(gettext "This script must be run with root privilages")
+(( EUID == 0 )) || die "$msg"
 
 (( $# )) || die "No root directory specified"
 

@@ -1,17 +1,13 @@
 #!/bin/bash
 
 export TEXTDOMAIN=pacstrap-f123pi
-export TEXTDOMAINDIR=$PWD/locale
+export TEXTDOMAINDIR=./locale
 #export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
 . ./pacstrap-f123pi.lib
 
-usage() {
-	usg=$(gettext "pacstrap_usage")
-	echo -e "${usg}"
-}
 
 set -e
 

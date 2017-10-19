@@ -1,6 +1,18 @@
 
-out() { printf "$1 $2\n" "${@:3}"; }
-error() { out "ERROR:" "$@"; } >&2
+
+usage() {
+	echo -e $(gettext "usage_")
+} >&2
+
+
+
+out() {
+	printf "$1 $2\n" "${@:3}"
+}
+
+error() {
+	out "ERROR:" "$@"
+} >&2
 
 die() {
 	error "$@"
