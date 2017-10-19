@@ -1,6 +1,6 @@
 PREFIX = /usr/local/share/locale
 
-all: en es_ES pt_BR
+all: en
 
-en es_ES pt_BR:
+en :
 	msgfmt -o ../locale/$@/LC_MESSAGES/pacstrap-f123pi.mo pacstrap-f123pi.en.po
