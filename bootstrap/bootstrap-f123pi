@@ -9,14 +9,22 @@ export TEXTDOMAINDIR=$PWD/locale
 . ./pacstrap-f123pi.lib
 
 usage() {
-	usg=$(gettext "bootstrap_usage")
+	usg=$(gettext "pacstrap_usage")
 	echo -e "${usg}"
 }
 
 set -e
 
-#while getopts ':dho:p:r:u:' flag
-while getopts ':dh' flag
+
+HOSTNAME=alarmpi
+ROOTPWD=root
+USERNAME=alarm
+USERPWD=alarm
+
+directory=0
+
+while getopts ':dho:p:r:u:' flag
+#while getopts ':dh' flag
 do
 case $flag in
 d)
@@ -25,6 +33,18 @@ directory=1
 h)
 usage
 exit 0
+;;
+o)
+HOSTNAME=${OPTARG}
+;;
+p)
+USERPWD=${OPTARG}
+;;
+r)
+ROOTPWD=${OPTARG}
+;;
+u)
+USERNAME=${OPTARG}
 ;;
 :)
 msg=$(gettext "Option requires an argument")
@@ -43,18 +63,21 @@ shift $(( OPTIND - 1 ))
 
 newroot=$1; shift
 
+if (( directory )) ; then
+	optiond='-d'
+fi
 
 # Basic alarmpi packages
-./pacstrap-f123pi -l package_lists/alarmpi.base.pkglist -d "${newroot}"
+./pacstrap-f123pi -l package_lists/alarmpi.base.pkglist ${optiond} "${newroot}"
 
 # Basic f123pi packages
-./pacstrap-f123pi -l package_lists/f123pi.base.pkglist -d "${root}"
+./pacstrap-f123pi -l package_lists/f123pi.base.pkglist ${optiond} "${newroot}"
 
 # Console accessibility related packages
-./pacstrap-f123pi -l package_lists/alarmpi.a11y.pkglist -d "${newroot}"
+./pacstrap-f123pi -l package_lists/alarmpi.a11y.pkglist ${optiond} "${newroot}"
 
 # Development tools packages
-./pacstrap-f123pi -l ./package_lists/develtools.pkglist -d "${newroot}"
+./pacstrap-f123pi -l ./package_lists/develtools.pkglist ${optiond} "${newroot}"
 
 #
 # Put extra calls to pacstrap-f123pi in here when more configurations are added.
@@ -62,11 +85,6 @@ newroot=$1; shift
 # Such as package lists which contain desktop packages
 #
 
-
-[ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
-[ -z "${ROOTPWD}" ] && ROOTPWD=root
-[ -z "${USERNAME}" ] && USERNAME=alarm
-[ -z "${USERPWD}" ] && USERPWD=alarm
 
 ./config-base-f123pi -o "${HOSTNAME}" -r "${ROOTPWD}" -u "${USERNAME}" -p "${USERPWD}" -d "${newroot}"
 

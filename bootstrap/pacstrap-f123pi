@@ -68,14 +68,14 @@ if ! mountpoint -q "${newroot}" && (( ! directory )); then
 die '%s is not a mountpoint!' "$newroot"
 fi
 
-
 if (( directory )) ; then
 echo "Pacstrapping in ${newroot} directory"
-pacstrap -d "${newroot}" --needed --noprogressbar "${packages[@]}"
+	optiond='-d'
 else
 echo "Pacstrapping in ${newroot} mount-point"
-pacstrap "${newroot}" --needed --noprogressbar "${packages[@}"
 fi
+
+pacstrap ${optiond} "${newroot}" --needed --noprogressbar "${packages[@]}"
 
 
 echo done
