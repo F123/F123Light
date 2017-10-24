@@ -11,10 +11,10 @@ export TEXTDOMAINDIR=./locale
 set -e
 
 
-HOSTNAME=alarmpi
-ROOTPWD=root
-USERNAME=alarm
-USERPWD=alarm
+export HOSTNAME_=f123pi
+export ROOTPWD=root
+export USERNAME=f123
+export USERPWD=1234
 
 directory=0
 
@@ -30,7 +30,7 @@ usage
 exit 0
 ;;
 o)
-HOSTNAME=${OPTARG}
+HOSTNAME_=${OPTARG}
 ;;
 p)
 USERPWD=${OPTARG}
@@ -81,7 +81,7 @@ fi
 #
 
 
-./config-base-f123pi -o "${HOSTNAME}" -r "${ROOTPWD}" -u "${USERNAME}" -p "${USERPWD}" -d "${newroot}"
+./config-base-f123pi -o "${HOSTNAME_}" -r "${ROOTPWD}" -u "${USERNAME}" -p "${USERPWD}" -d "${newroot}"
 
 #
 # Put more calls to bespoke config scripts in here.

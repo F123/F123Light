@@ -1,7 +1,11 @@
+alsa-utils
 base
 linux-raspberrypi
 linux-raspberrypi-headers
 ntp
 openssh
+python
+python2
+python-xdg
 raspberrypi-firmware
 sudo

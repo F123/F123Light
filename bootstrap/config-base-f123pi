@@ -13,7 +13,7 @@ set -e
 
 
 
-[ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
+[ -z "${HOSTNAME_}" ] && HOSTNAME_=alarmpi
 [ -z "${ROOTPWD}" ] && ROOTPWD=root
 [ -z "${USERNAME}" ] && USERNAME=alarm
 [ -z "${USERPWD}" ] && USERPWD=alarm
@@ -33,7 +33,7 @@ usage
 exit 0
 ;;
 o)
-HOSTNAME=${OPTARG}
+HOSTNAME_=${OPTARG}
 ;;
 p)
 USERPWD=${OPTARG}
@@ -80,7 +80,7 @@ chroot "${newroot}"/ mknod -m 666 /dev/null c 1 3
 chroot "${newroot}"/ mknod -m 666 /dev/zero c 1 5
 
 # set the host name
-input="echo \"${HOSTNAME}\" > /etc/hostname"
+input="echo \"${HOSTNAME_}\" > /etc/hostname"
 echo "${input}"
 chroot "${newroot}" /bin/bash -c "${input}"
 
@@ -95,10 +95,13 @@ chroot "${newroot}" /bin/bash -c "echo -e \"\n\ndtparam=audio=on\n\n\" >> /boot/
 
 set_password "${newroot}" root "${ROOTPWD}"
 
+# populate /etc/skel before creating new user
+install -m0644 ./files/etc/skel/.bash* "${newroot}"/etc/skel
+
 add_user "${newroot}" "${USERNAME}"
 set_password "${newroot}" "${USERNAME}" "${USERPWD}"
 
-for SERVICE in dhcpcd ntpd sshd
+for SERVICE in dhcpcd ntpd sshd piespeakup2
 do
 	manage_service "${newroot}" enable "${SERVICE}"
 done

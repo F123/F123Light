@@ -14,11 +14,6 @@ set -e
 msg=$(gettext "This script must be run with root privilages")
 (( EUID == 0 )) || die "$msg"
 
-[ -z "${HOSTNAME}" ] && HOSTNAME=alarmpi
-[ -z "${ROOTPWD}" ] && ROOTPWD=root
-[ -z "${USERNAME}" ] && USERNAME=alarm
-[ -z "${USERPWD}" ] && USERPWD=alarm
-
 directory=0
 packagelist=
 
@@ -71,7 +66,7 @@ else
 echo "Pacstrapping in ${newroot} mount-point"
 fi
 
-pacstrap ${optiond} "${newroot}" --needed --noprogressbar "${packages[@]}"
+pacstrap -C ./pacman/pacman.f123pi.conf ${optiond} "${newroot}" --needed --noprogressbar "${packages[@]}"
 
 
 echo done

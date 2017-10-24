@@ -1,10 +1,15 @@
 dialog
+dos2unix
+dotconf
 emacs-nox
 git
+intltool
 json-c
+libltdl
 libnewt
 liburcu
 multipath-tools
+omxplayer
 package-query
 parted
 tcl
