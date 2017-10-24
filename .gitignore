@@ -2,4 +2,7 @@
 res
 *~
 
+# Pi .img files
+*.img
+
 
