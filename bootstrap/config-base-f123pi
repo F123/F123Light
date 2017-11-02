@@ -66,9 +66,9 @@ newroot=$1; shift
 
 
 [[ -d $newroot ]] || die "%s is not a directory" "$newroot"
-if ! mountpoint -q "${newroot}" && (( ! directory )); then
-die '%s is not a mountpoint!' "$newroot"
-fi
+#if ! mountpoint -q "${newroot}" && (( ! directory )); then
+#die '%s is not a mountpoint!' "$newroot"
+#fi
 
 
 cp /boot/*.bin "${newroot}"/boot
@@ -101,7 +101,7 @@ install -m0644 ./files/etc/skel/.bash* "${newroot}"/etc/skel
 add_user "${newroot}" "${USERNAME}"
 set_password "${newroot}" "${USERNAME}" "${USERPWD}"
 
-for SERVICE in dhcpcd ntpd sshd piespeakup2
+for SERVICE in dhcpcd ntpd sshd
 do
 	manage_service "${newroot}" enable "${SERVICE}"
 done
