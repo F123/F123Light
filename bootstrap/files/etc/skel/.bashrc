@@ -7,3 +7,8 @@
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
+
+# Don't put commands prefixed with space, or duplicate commands in history
+export HISTCONTROL=ignoreboth
+
+

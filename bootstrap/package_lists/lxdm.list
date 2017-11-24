@@ -1,3 +1,10 @@
+base
+linux-raspberrypi
+linux-raspberrypi-headers
+ntp
+openssh
+raspberrypi-firmware
+base-devel
 alsa-utils
 dialog
 dos2unix
@@ -27,3 +34,11 @@ python-setuptools
 speech-dispatcher
 yajl
 yaourt
+xorg-server
+xorg-xinit 
+xf86-video-fbdev
+xf86-input-keyboard
+xorg-xkbcomp
+xorg-twm
+lxdm
+orca
