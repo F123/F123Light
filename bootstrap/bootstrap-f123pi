@@ -63,20 +63,19 @@ if (( directory )) ; then
 fi
 
 # Basic alarmpi packages
-./pacstrap-f123pi -l package_lists/alarmpi/base.pkglist ${optiond} "${newroot}"
+#./pacstrap-f123pi -l package_lists/alarmpi/base.pkglist ${optiond} "${newroot}"
 
 # Basic f123pi packages
-./pacstrap-f123pi -l package_lists/f123pi/base.pkglist ${optiond} "${newroot}"
+#./pacstrap-f123pi -l package_lists/f123pi/base.pkglist ${optiond} "${newroot}"
 
 # Console accessibility related packages
 #./pacstrap-f123pi -l package_lists/alarmpi.a11y.pkglist ${optiond} "${newroot}"
 
 # Development tools packages
-./pacstrap-f123pi -l ./package_lists/dev/tools.pkglist ${optiond} "${newroot}"
+#./pacstrap-f123pi -l ./package_lists/dev/tools.pkglist ${optiond} "${newroot}"
 
-# The MATE desktop
-./pacstrap-f123pi -l ./package_lists/f123pi/mate.pkglist ${optiond} "${newroot}"
-./pacstrap-f123pi -l ./package_lists/f123pi/mate.extra.pkglist ${optiond} "${newroot}"
+# Alarmpi base, f123pi base, dev tools and the MATE desktop are all in one package list.
+./pacstrap-f123pi -l ./package_lists/f123pi.mate.pkglist ${optiond} "${newroot}"
 
 #
 # Put extra calls to pacstrap-f123pi in here when more configurations are added.
