@@ -110,7 +110,7 @@ set_password "${newroot}" "${USERNAME}" "${USERPWD}"
 chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.mate.interface accessibility true"
 
 
-for SERVICE in dhcpcd ntpd sshd piespeakup2
+for SERVICE in dhcpcd ntpd sshd lxdm
 do
 	manage_service "${newroot}" enable "${SERVICE}"
 done
