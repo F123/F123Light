@@ -71,9 +71,11 @@ newroot=$1; shift
 #fi
 
 
-cp /boot/*.bin "${newroot}"/boot
-cp /boot/*.dat "${newroot}"/boot
-cp /boot/*.elf "${newroot}"/boot
+# /boot on the new system should be populated by raspberrypi-bootloader.
+# The following lines should not be needed.
+#cp /boot/*.bin "${newroot}"/boot
+#cp /boot/*.dat "${newroot}"/boot
+#cp /boot/*.elf "${newroot}"/boot
 
 chroot "${newroot}"/ mknod -m 600 /dev/console c 5 1
 chroot "${newroot}"/ mknod -m 666 /dev/null c 1 3
