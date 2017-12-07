@@ -3,6 +3,7 @@ linux-raspberrypi
 linux-raspberrypi-headers
 ntp
 openssh
+raspberrypi-bootloader
 raspberrypi-firmware
 sudo
 base-devel
