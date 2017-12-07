@@ -75,8 +75,8 @@ fi
 ./pacstrap-f123pi -l ./package_lists/dev/tools.pkglist ${optiond} "${newroot}"
 
 # The MATE desktop
-./pacstrap-f123pi ./package_lists/f123pi/mate.pkglist ${optiond} "${newroot}"
-./pacstrap-f123pi ./package_lists/f123pi/mate.extra.pkglist ${optiond} "${newroot}"
+./pacstrap-f123pi -l ./package_lists/f123pi/mate.pkglist ${optiond} "${newroot}"
+./pacstrap-f123pi -l ./package_lists/f123pi/mate.extra.pkglist ${optiond} "${newroot}"
 
 #
 # Put extra calls to pacstrap-f123pi in here when more configurations are added.
