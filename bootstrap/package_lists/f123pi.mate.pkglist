@@ -17,14 +17,9 @@ json-c
 libao
 libltdl
 libnewt
-libpipcmrender
-libpulse
 liburcu
-multipath-tools
-package-query
+packer
 parted
-piespeakup2
-pulseaudio
 python
 python2
 python-pyudev
@@ -34,7 +29,6 @@ python-dbus
 python-setuptools
 speech-dispatcher
 yajl
-yaourt
 xf86-video-vesa
 xorg-bdftopcf
 xorg-docs
