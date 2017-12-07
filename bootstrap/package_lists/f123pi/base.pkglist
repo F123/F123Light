@@ -9,10 +9,8 @@ json-c
 libao
 libltdl
 libnewt
-libpipcmrender
 liburcu
-multipath-tools
-package-query
+packer
 parted
 python
 python2
@@ -23,4 +21,4 @@ python-dbus
 python-setuptools
 speech-dispatcher
 yajl
-yaourt
+
