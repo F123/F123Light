@@ -10,13 +10,10 @@ libao
 libltdl
 libnewt
 libpipcmrender
-libpulse
 liburcu
 multipath-tools
 package-query
 parted
-piespeakup2
-pulseaudio
 python
 python2
 python-pyudev
