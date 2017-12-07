@@ -72,7 +72,7 @@ fi
 #./pacstrap-f123pi -l package_lists/alarmpi.a11y.pkglist ${optiond} "${newroot}"
 
 # Development tools packages
-./pacstrap-f123pi -l ./package_lists/devel/tools.pkglist ${optiond} "${newroot}"
+./pacstrap-f123pi -l ./package_lists/dev/tools.pkglist ${optiond} "${newroot}"
 
 # The MATE desktop
 ./pacstrap-f123pi ./package_lists/f123pi/mate.pkglist ${optiond} "${newroot}"
