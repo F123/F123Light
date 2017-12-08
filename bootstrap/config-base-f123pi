@@ -102,9 +102,7 @@ chroot "${newroot}" /bin/bash -c 'echo "SSHD: ALL" >> /etc/hosts.allow'
 set_password "${newroot}" root "${ROOTPWD}"
 
 # Copy all modified files into the new system
-for d in ./files/*; do
-	cp -R "$d" "${newroot}"
-done
+	cp -R ./files/* "${newroot}"
 
 # Add the regular user
 add_user "${newroot}" "${USERNAME}"
