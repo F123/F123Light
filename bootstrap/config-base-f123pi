@@ -101,9 +101,12 @@ chroot "${newroot}" /bin/bash -c 'echo "SSHD: ALL" >> /etc/hosts.allow'
 
 set_password "${newroot}" root "${ROOTPWD}"
 
-# populate /etc/skel before creating new user
-install -m0644 ./files/etc/skel/.bash* "${newroot}"/etc/skel
+# Copy all modified files into the new system
+for d in ./files/*; do
+	cp -R "$d" "${newroot}"
+done
 
+# Add the regular user
 add_user "${newroot}" "${USERNAME}"
 set_password "${newroot}" "${USERNAME}" "${USERPWD}"
 
@@ -114,13 +117,6 @@ for SERVICE in dhcpcd ntpd sshd lxdm
 do
 	manage_service "${newroot}" enable "${SERVICE}"
 done
-
-# udev rule files
-install -m0644 ./files/etc/udev/rules.d/* "${newroot}"/etc/udev/rules.d
-
-# Root file system auto expansion
-#install -d "${newroot}"/usr/lib/raspi-config
-#install -m0755 ./files/usr/lib/raspi-config/init_resize.sh "${newroot}"/usr/lib/raspi-config
 
 
 newrootsize=$(du -hs "${newroot}" | cut -f1 -d' ')
