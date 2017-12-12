@@ -108,8 +108,10 @@ set_password "${newroot}" root "${ROOTPWD}"
 add_user "${newroot}" "${USERNAME}"
 set_password "${newroot}" "${USERNAME}" "${USERPWD}"
 
+# turn on MATE accessibility
 chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.mate.interface accessibility true"
-
+# The most recent dbus-daemon, started by dbus-launch above, must be killed in order to unmount the image root partition.
+pkill -n dbus-daemon
 
 for SERVICE in dhcpcd ntpd sshd lxdm
 do
