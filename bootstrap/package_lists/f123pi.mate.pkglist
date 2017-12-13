@@ -18,9 +18,11 @@ json-c
 libao
 libltdl
 libnewt
+libpulse
 liburcu
 packer
 parted
+pulseaudio
 python
 python2
 python-pyudev
@@ -29,6 +31,7 @@ python-evdev
 python-dbus
 python-setuptools
 speech-dispatcher
+wpa_supplicant
 yajl
 xf86-video-vesa
 xorg-bdftopcf
@@ -119,6 +122,7 @@ mate-utils
 mozo
 pluma
 lxdm
-ratpoison
+network-manager-applet
+networkmanager
 orca
 seamonkey
