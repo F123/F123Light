@@ -133,23 +133,11 @@ main () {
 
   check_kernel
 
-  if [ "$NOOBS" = "1" ] && [ "$NEW_KERNEL" != "1" ]; then
-    BCM_MODULE=$(grep -e "^Hardware" /proc/cpuinfo | cut -d ":" -f 2 | tr -d " " | tr '[:upper:]' '[:lower:]')
-    if ! modprobe "$BCM_MODULE"; then
-      FAIL_REASON="Couldn't load BCM module $BCM_MODULE"
-      return 1
-    fi
-  fi
+touch /root/f2
 
-  if [ "$ROOT_PART_END" -eq "$TARGET_END" ]; then
-    reboot_pi
-  fi
-
-touch /root/i2
-
-  parted ${ROOT_DEV} unit s resizepart ${ROOT_PART_NUM} Yes ${TARGET_END}
+  resize2fs ${ROOT_PART_DEV}
   if [ $? != "0" ]; then
-touch /root/ifail
+touch /root/ffail
     FAIL_REASON="Root partition resize failed"
     return 1
   fi
@@ -168,13 +156,12 @@ mkdir -p /run/systemd
 mount /boot
 mount / -o remount,rw
 
-touch /root/i1
+touch /root/f1
+sed -i 's| init=/usr/lib/raspi-config/fix_resize.sh||' /boot/cmdline.txt
 
-sed -i 's| init=/usr/lib/raspi-config/init_resize.sh| init=/usr/lib/raspi-config/fix_resize.sh|' /boot/cmdline.txt
-
-#if ! grep -q splash /boot/cmdline.txt; then
-#  sed -i "s/ quiet//g" /boot/cmdline.txt
-#fi
+if ! grep -q splash /boot/cmdline.txt; then
+  sed -i "s/ quiet//g" /boot/cmdline.txt
+fi
 sync
 
 echo 1 > /proc/sys/kernel/sysrq
