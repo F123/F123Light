@@ -121,8 +121,11 @@ mate-user-share
 mate-utils
 mozo
 pluma
+firefox
+libreoffice-still
 lxdm
 network-manager-applet
 networkmanager
 orca
 seamonkey
+thunderbird
