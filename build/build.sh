@@ -14,6 +14,8 @@ if [ -f "$1" ]; then
 else
 	echo No configuration file specified.
 	echo Usage: sudo $0 \<configfile\>
+	echo The following config files were found in this build directory:
+	ls -1 *conf
 	exit 1
 fi
 
