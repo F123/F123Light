@@ -23,5 +23,6 @@ rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize"
 # Bootstrap the OS
 ./bootstrap-f123pi -o $hostname -r "$rootpass" -u $username -p "$userpass" "${workdir}/root"
 
-# Unmount the image file
+# Unmount the image file and remove the emptied work directory
 rpi-image-tool -C "$workdir"
+rm -R $workdir
