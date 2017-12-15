@@ -59,7 +59,6 @@ if (( directory )) ; then
 fi
 
 # Install software to the new root
-echo Installing ${PACKAGELIST}...
 ./pacstrap -l "${PACKAGELIST}" ${optiond} "${newroot}"
 
 ./config-base -o "${HOSTNAME_}" -r "${ROOTPWD}" -u "${USERNAME}" -p "${USERPWD}" -d "${newroot}"
