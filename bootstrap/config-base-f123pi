@@ -116,6 +116,10 @@ pkill -n dbus-daemon
 chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
 # Kill the most recent dbus-daemon again
 pkill -n dbus-daemon
+# Set the logo file
+chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.mate.background picture-filename /usr/share/mate/F123/logo.png"
+# Kill the most recent dbus-daemon
+pkill -n dbus-daemon
 
 for SERVICE in dhcpcd ntpd sshd NetworkManager lxdm
 do
