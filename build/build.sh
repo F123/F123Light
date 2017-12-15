@@ -26,7 +26,7 @@ cd scripts
 ./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize"
 
 # Bootstrap the OS
-./bootstrap -o $hostname -r "$rootpass" -u $username -p "$userpass" "${workdir}/root"
+./bootstrap -l $packagelist -o $hostname -r "$rootpass" -u $username -p "$userpass" "${workdir}/root"
 
 # Unmount the image file and remove the emptied work directory
 ./rpi-image-tool -C "$workdir"

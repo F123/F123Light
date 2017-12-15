@@ -12,8 +12,7 @@ set -e
 
 directory=0
 
-while getopts ':dho:p:r:u:' flag
-#while getopts ':dh' flag
+while getopts ':dhlo:p:r:u:' flag
 do
 case $flag in
 d)
@@ -22,6 +21,9 @@ directory=1
 h)
 usage
 exit 0
+;;
+l)
+PACKAGELIST=${OPTARG}
 ;;
 o)
 HOSTNAME_=${OPTARG}
@@ -57,6 +59,6 @@ if (( directory )) ; then
 fi
 
 # Alarmpi base, f123pi base, dev tools and the MATE desktop are all in one package list.
-./pacstrap -l ../package_lists/f123pi.mate.pkglist ${optiond} "${newroot}"
+./pacstrap -l $PACKAGELIST ${optiond} "${newroot}"
 
 ./config-base -o "${HOSTNAME_}" -r "${ROOTPWD}" -u "${USERNAME}" -p "${USERPWD}" -d "${newroot}"
