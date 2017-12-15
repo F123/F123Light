@@ -30,4 +30,4 @@ cd scripts
 
 # Unmount the image file and remove the emptied work directory
 ./rpi-image-tool -C "$workdir"
-rm -R $workdir
+rm -R "$workdir"
