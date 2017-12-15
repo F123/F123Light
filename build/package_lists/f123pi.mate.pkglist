@@ -8,6 +8,7 @@ raspberrypi-firmware
 sudo
 base-devel
 alsa-utils
+arch-install-scripts
 dialog
 dos2unix
 dotconf
