@@ -1,12 +1,12 @@
 #!/bin/bash
 
-export TEXTDOMAIN=pacstrap-f123pi
+export TEXTDOMAIN=pacstrap
 export TEXTDOMAINDIR=./locale
 #export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
-. ./pacstrap-f123pi.lib
+. ./pacstrap.lib
 
 
 set -e
