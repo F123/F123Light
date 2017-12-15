@@ -19,12 +19,15 @@ else
 	exit 1
 fi
 
+# All build stage scripts run from the scripts directory underneath the directory where this build script resides.
+cd scripts
+
 # Start by creating an empty image.
-rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize"
+./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize"
 
 # Bootstrap the OS
-./bootstrap-f123pi -o $hostname -r "$rootpass" -u $username -p "$userpass" "${workdir}/root"
+./bootstrap -o $hostname -r "$rootpass" -u $username -p "$userpass" "${workdir}/root"
 
 # Unmount the image file and remove the emptied work directory
-rpi-image-tool -C "$workdir"
+./rpi-image-tool -C "$workdir"
 rm -R $workdir
