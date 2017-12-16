@@ -6,7 +6,7 @@ export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
-. rpi-image-tool.lib
+. ./rpi-image-tool.lib
 
 
 usage() {
@@ -30,6 +30,9 @@ FUNCTION=
 SPLIT=64
 BLOCKSIZE=1M
 BLOCKCOUNT=
+
+BOOTLABEL=RPi-Boot
+ROOTLABEL=RPi-Root
 
 BOOTMOUNTPOINT=boot
 ROOTMOUNTPOINT=root
@@ -65,6 +68,12 @@ C)
 	s)
 		SPLIT=${OPTARG}
 		validate_split ${SPLIT}
+	;;
+	b)
+		BOOTLABEL="${OPTARG}"
+	;;
+	r)
+		ROOTLABEL="${OPTARG}"
 	;;
 	w)
 		WORKDIR=${OPTARG}
@@ -116,7 +125,7 @@ case ${FUNCTION} in
 		mount_device ${WORKDIR} ${DEVICE} ${BOOTMOUNTPOINT} ${ROOTMOUNTPOINT}
 	;;
 	new)
-		new_image ${WORKDIR} ${IMAGEFILE} ${BOOTMOUNTPOINT} ${ROOTMOUNTPOINT} ${BLOCKCOUNT} ${BLOCKSIZE} ${SPLIT}
+		new_image ${WORKDIR} ${IMAGEFILE} ${BOOTLABEL} ${ROOTLABEL} ${BOOTMOUNTPOINT} ${ROOTMOUNTPOINT} ${BLOCKCOUNT} ${BLOCKSIZE} ${SPLIT}
 	;;
 esac
 

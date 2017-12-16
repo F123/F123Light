@@ -120,11 +120,13 @@ mount_partitions() {
 new_image() {
 	local WORKDIR=${1}
 	local IMAGEFILE=${2}
-	local BOOTMP=${3}
-	local ROOTMP=${4}
-	local BLOCKCOUNT=${5}
-	local BLOCKSIZE=${6}
-	local SPLIT=${7}	    
+	local BOOTLABEL=${3}
+	local ROOTLABEL=${4}
+	local BOOTMP=${5}
+	local ROOTMP=${6}
+	local BLOCKCOUNT=${7}
+	local BLOCKSIZE=${8}
+	local SPLIT=${9}
 
 	echo $(gettext "Making the work directory if it doesn't exist") ; echo
 	[ -d ${WORKDIR} ] || mkdir -p "${WORKDIR}"
@@ -152,8 +154,8 @@ new_image() {
 	sleep 5
 
 	echo $(gettext "Making file systems") ; echo
-	mkfs.vfat -n RPi-Boot ${BOOTP}
-	mkfs.ext4 -L RPi-Root ${ROOTP}
+	mkfs.vfat -n ${BOOTLABEL} ${BOOTP}
+	mkfs.ext4 -L ${ROOTLABEL} ${ROOTP}
 
 	mount_partitions ${WORKDIR} ${BOOTP} ${ROOTP} ${BOOTMP} ${ROOTMP}
 
