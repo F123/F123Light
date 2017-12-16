@@ -22,7 +22,7 @@ set -e
 directory=0
 
 
-while getopts ':dho:p:r:u:' flag
+while getopts ':dho:p:r:s:u:' flag
 do
 case $flag in
 d)
@@ -40,6 +40,9 @@ USERPWD=${OPTARG}
 ;;
 r)
 ROOTPWD=${OPTARG}
+;;
+s)
+	SERVICES="${OPTARG}"
 ;;
 u)
 USERNAME=${OPTARG}
@@ -118,7 +121,7 @@ chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set 
 # Kill the most recent dbus-daemon
 pkill -n dbus-daemon
 
-for SERVICE in dhcpcd ntpd sshd NetworkManager lxdm
+for SERVICE in $SERVICES
 do
 	manage_service "${newroot}" enable "${SERVICE}"
 done
