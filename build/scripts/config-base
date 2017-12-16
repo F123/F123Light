@@ -110,18 +110,11 @@ set_password "${newroot}" "${USERNAME}" "${USERPWD}"
 
 # turn on MATE accessibility
 chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.mate.interface accessibility true"
-sleep 1
 # The most recent dbus-daemon, started by dbus-launch above, must be killed in order to unmount the image root partition.
 pkill -n dbus-daemon
 # Make Orca start automatically
 chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
-sleep 1
 # Kill the most recent dbus-daemon again
-pkill -n dbus-daemon
-# Set the logo file
-chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.mate.background picture-filename /usr/share/backgrounds/mate/F123/logo.png"
-sleep  1
-# Kill the most recent dbus-daemon
 pkill -n dbus-daemon
 
 for SERVICE in $SERVICES
