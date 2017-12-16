@@ -38,7 +38,7 @@ BOOTMOUNTPOINT=boot
 ROOTMOUNTPOINT=root
 
 
-while getopts ':C:D:M:N:c:hs:w:z:' flag ; do
+while getopts ':C:D:M:N:b:c:hr:s:w:z:' flag ; do
 	case $flag in
 	h)
 		usage
