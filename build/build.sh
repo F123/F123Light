@@ -23,7 +23,7 @@ fi
 cd scripts
 
 # Start by creating an empty image.
-./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize"
+./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize" -b "$bootlabel" -r "$rootlabel"
 
 # Bootstrap the OS
 ./bootstrap -l $packagelist -o $hostname -r "$rootpass" -u $username -p "$userpass" "${workdir}/root"
