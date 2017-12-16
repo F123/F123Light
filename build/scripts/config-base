@@ -115,8 +115,8 @@ sleep 1
 pkill -n dbus-daemon
 # Make Orca start automatically
 chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
-
-sleeep 1# Kill the most recent dbus-daemon again
+sleep 1
+# Kill the most recent dbus-daemon again
 pkill -n dbus-daemon
 # Set the logo file
 chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.mate.background picture-filename /usr/share/backgrounds/mate/F123/logo.png"
