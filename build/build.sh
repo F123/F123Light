@@ -22,6 +22,13 @@ fi
 # All build stage scripts run from the scripts directory underneath the directory where this build script resides.
 cd scripts
 
+# Before building an image, we must be sure that the work directory does not exist.
+# There is not yet a facility to complete a half-built failed image.
+if [d "$workdir" ]; then
+	./rpi-image-tool -C "$workdir"
+	rm -R "$workdir"
+fi
+
 # Start by creating an empty image.
 ./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize" -b "$bootlabel" -r "$rootlabel"
 
