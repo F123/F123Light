@@ -24,7 +24,7 @@ cd scripts
 
 # Before building an image, we must be sure that the work directory does not exist.
 # There is not yet a facility to complete a half-built failed image.
-if [d "$workdir" ]; then
+if [ -d "$workdir" ]; then
 	./rpi-image-tool -C "$workdir"
 	rm -R "$workdir"
 fi
