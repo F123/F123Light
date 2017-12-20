@@ -121,9 +121,3 @@ for SERVICE in $SERVICES
 do
 	manage_service "${newroot}" enable "${SERVICE}"
 done
-
-
-newrootsize=$(du -hs "${newroot}" | cut -f1 -d' ')
-echo $(eval_gettext "\$progname completed successfully") ; echo
-echo $(eval_gettext "Size of installation in \${newroot} is now \${newrootsize}") ; echo
-

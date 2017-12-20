@@ -38,3 +38,7 @@ fi
 # Unmount the image file and remove the emptied work directory
 ./rpi-image-tool -C "$workdir"
 rm -R "$workdir"
+
+newrootsize=$(ls -hs "${imagename}" | cut -f1 -d' ')
+echo $imagename was built successfully; echo
+echo Size of $imagename is ${newrootsize}; echo
