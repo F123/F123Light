@@ -12,9 +12,12 @@ set -e
 
 directory=0
 
-while getopts ':dhl:o:p:r:s:u:' flag
+while getopts ':a:dhl:o:p:r:s:u:' flag
 do
 case $flag in
+a)
+	AUDIOOUT=${OPTARG}
+;;
 d)
 directory=1
 ;;
