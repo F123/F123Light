@@ -33,7 +33,7 @@ fi
 ./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize" -b "$bootlabel" -r "$rootlabel"
 
 # Bootstrap the OS
-./bootstrap -l $packagelist -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" -a $audioout "${workdir}/root"
+./bootstrap -l $packagelist -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
 
 # Unmount the image file and remove the emptied work directory
 ./rpi-image-tool -C "$workdir"

@@ -17,17 +17,14 @@ set -e
 [ -z "${ROOTPWD}" ] && ROOTPWD=root
 [ -z "${USERNAME}" ] && USERNAME=alarm
 [ -z "${USERPWD}" ] && USERPWD=alarm
-[ -z "${AUDIOOUT}" ] && AUDIOOUT=0
+
 
 directory=0
 
 
-while getopts ':a:dho:p:r:s:u:' flag
+while getopts ':dho:p:r:s:u:' flag
 do
 case $flag in
-a)
- AUDIOOUT=${OPTARG}
-;;
 d)
 directory=1
 ;;
@@ -125,9 +122,6 @@ do
 	manage_service "${newroot}" enable "${SERVICE}"
 done
 
-# Set the audio output
-chroot "${newroot}" /bin/bash -c "amixer cset numid=3 $AUDIOOUT"
-chroot "${newroot}" /bin/bash -c "alsactl store"
 
 newrootsize=$(du -hs "${newroot}" | cut -f1 -d' ')
 echo $(eval_gettext "\$progname completed successfully") ; echo
