@@ -25,9 +25,6 @@ directory=0
 while getopts ':adho:p:r:s:u:' flag
 do
 case $flag in
-a)
-	VISUALACCESS=1
-;;
 d)
 directory=1
 ;;
@@ -110,19 +107,6 @@ set_password "${newroot}" root "${ROOTPWD}"
 # Add the regular user
 add_user "${newroot}" "${USERNAME}"
 set_password "${newroot}" "${USERNAME}" "${USERPWD}"
-
-# Only set gsettings keys if desktop accessibility is needed.
-# This cannot run when building a text only image
-if [ $VISUALACCESS ]; then
-	# turn on MATE accessibility
-	chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.mate.interface accessibility true"
-	# The most recent dbus-daemon, started by dbus-launch above, must be killed in order to unmount the image root partition.
-	pkill -n dbus-daemon
-	# Make Orca start automatically
-	chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
-	# Kill the most recent dbus-daemon again
-	pkill -n dbus-daemon
-fi
 
 for SERVICE in $SERVICES
 do
