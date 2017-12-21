@@ -50,12 +50,12 @@ newroot=$1; shift
 # A temporary directory holding all build files should be created on the mounted image file.
 # It must be owned by the regular user, which will be given the uid 1000.
 # This whole directory will be removed once the AUR packages are installed.
-mkdir -p "${newroot}/aur
+mkdir -p "${newroot}/aur"
 chown 1000 "${newroot}/aur"
 cd "${newroot}/aur"
 
 # Clone the package build information from the AUR, then build and install each package inside the chroot
-for package in $(cat "$packagelist"; do
+for package in $(cat "$packagelist"); do
 	git clone https://aur.archlinux.org/${package}.git
 	chroot "${newroot}" sudo -u \$1000 /bin/bash -c \
 		"{
@@ -70,7 +70,7 @@ for package in $(cat "$packagelist"; do
 done
 
 # cleanup the working package build directory
-cd $OLDPWD
+cd "$OLDPWD"
 rm -R "${newroot}/aur"
 	
 echo done
