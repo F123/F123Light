@@ -1,3 +1,20 @@
+#!/bin/bash
+# Gsettings commands to enable desktop accessibility and the Orca screen reader
+
+# die if this script is called with no argument.
+if [ -z $1 ]; then
+	echo No root specified
+	exit 1
+fi
+
+# Die if called with more than one argument
+if [ $2 ]; then
+	echo Too many arguments
+	exit 1
+fi
+
+newroot=$1
+
 # turn on MATE accessibility
 chroot "${newroot}" /bin/bash -c "sudo -u ${USERNAME} dbus-launch gsettings set org.mate.interface accessibility true"
 # The most recent dbus-daemon, started by dbus-launch above, must be killed in order to unmount the image root partition.
