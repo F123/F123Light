@@ -62,7 +62,7 @@ for package in $(cat "$packagelist"); do
 			cd /aur/$package;
 			makepkg;
 		}"
-	chroot "${newroot} /bin/bash -c \
+	chroot "${newroot}" /bin/bash -c \
 		"{
 			cd /aur/$package;
 			pacman -U \*.tar.xz --noconfirm --noprogressbar;
