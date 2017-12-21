@@ -32,8 +32,11 @@ fi
 # Start by creating an empty image.
 ./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize" -b "$bootlabel" -r "$rootlabel"
 
-# Bootstrap the OS
-./bootstrap -l $packagelist -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
+# Install packages available from the official ALARM repositories.
+./pacstrap -l "$packagelist" "$workdir/root"
+
+# Configure the system
+./config-base -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
 
 # Unmount the image file and remove the emptied work directory
 ./rpi-image-tool -C "$workdir"
