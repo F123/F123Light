@@ -52,14 +52,13 @@ newroot=$1; shift
 # This whole directory will be removed once the AUR packages are installed.
 mkdir -p "${newroot}/aur"
 chown 1000 "${newroot}/aur"
-cd "${newroot}/aur"
 
-# Clone the package build information from the AUR, then build and install each package inside the chroot
+# From the image chroot, Clone the package build information from the AUR, then build and install each package.
 for package in $(cat "$packagelist"); do
-	git clone https://aur.archlinux.org/${package}.git
 	chroot "${newroot}" sudo -u \#1000 /bin/bash -c \
 		"{
-			cd /aur/$package;
+			git clone https://aur.archlinux.org/${package}.git;
+cd /aur/$package;
 			makepkg;
 		}"
 	chroot "${newroot}" /bin/bash -c \
@@ -70,7 +69,6 @@ for package in $(cat "$packagelist"); do
 done
 
 # cleanup the working package build directory
-cd "$OLDPWD"
 rm -R "${newroot}/aur"
 	
 echo done
