@@ -55,7 +55,7 @@ chown 1000 "${newroot}/aur"
 
 # From the image chroot, Clone the package build information from the AUR, then build and install each package.
 for package in $(cat "$packagelist"); do
-	chroot "${newroot}" sudo -u \#1000 /bin/bash -c \
+	arch-chroot "${newroot}" sudo -u \#1000 /bin/bash -c \
 		"{
 cd /aur;
 			git clone https://aur.archlinux.org/${package}.git;
