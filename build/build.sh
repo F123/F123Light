@@ -35,8 +35,12 @@ fi
 # Install packages available from the official ALARM repositories.
 ./pacstrap -l "$packagelist" "$workdir/root"
 
-# Configure the system
+# Configure the base system: hostname, username, passwords, services
 ./config-base -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
+
+# Set gsettings keys to enable Orca
+# This is optional, and cannot run on a text only system.
+[ $desktopaccess ] && ./orca-gsettings "Rworkdir"
 
 # Unmount the image file and remove the emptied work directory
 ./rpi-image-tool -C "$workdir"
