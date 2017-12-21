@@ -1,0 +1,79 @@
+#!/bin/bash
+
+export TEXTDOMAIN=pacstrap
+export TEXTDOMAINDIR=./locale
+#export TEXTDOMAINDIR=/usr/local/share/locale
+
+. gettext.sh
+
+. ./pacstrap.lib
+
+
+set -e
+
+msg=$(gettext "This script must be run with root privilages")
+(( EUID == 0 )) || die "$msg"
+
+packagelist=
+
+while getopts ':hl:' flag
+do
+case $flag in
+h)
+usage
+exit 0
+;;
+l)
+packagelist=$OPTARG
+;;
+:)
+msg=$(gettext "Option requires an argument")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
+;;
+?)
+msg=$(gettext "Invalid option")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
+;;
+esac
+done
+
+shift $(( OPTIND - 1 ))
+
+(( $# )) || die "No root directory specified"
+
+newroot=$1; shift
+
+[[ -z "${packagelist}" ]] && die "No package list supplied"
+[[ -f "${packagelist}" ]] || die "Package list ${packagelist} does not exist"
+[[ -r "${packagelist}" ]] || die "Package list ${packagelist} is not readable"
+
+# A temporary directory holding all build files should be created on the mounted image file.
+# It must be owned by the regular user, which will be given the uid 1000.
+# This whole directory will be removed once the AUR packages are installed.
+mkdir -p "${newroot}/aur
+chown 1000 "${newroot}/aur"
+cd "${newroot}/aur"
+
+# Clone the package build information from the AUR, then build and install each package inside the chroot
+for package in $(cat "$packagelist"; do
+	git clone https://aur.archlinux.org/${package}.git
+	chroot "${newroot}" sudo -u \$1000 /bin/bash -c \
+		"{
+			cd /aur/$package;
+			makepkg;
+		}"
+	chroot "${newroot} /bin/bash -c \
+		"{
+			cd /aur/$package;
+			pacman -U \*.tar.xz;
+		}"
+done
+
+# cleanup the working package build directory
+cd $OLDPWD
+rm -R "${newroot}/aur"
+	
+echo done
+
+exit 0
+
