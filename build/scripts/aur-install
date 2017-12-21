@@ -57,7 +57,7 @@ cd "${newroot}/aur"
 # Clone the package build information from the AUR, then build and install each package inside the chroot
 for package in $(cat "$packagelist"); do
 	git clone https://aur.archlinux.org/${package}.git
-	chroot "${newroot}" sudo -u \$1000 /bin/bash -c \
+	chroot "${newroot}" sudo -u \#1000 /bin/bash -c \
 		"{
 			cd /aur/$package;
 			makepkg;
