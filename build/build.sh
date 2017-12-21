@@ -39,6 +39,10 @@ fi
 ./rpi-image-tool -C "$workdir"
 rm -R "$workdir"
 
+# Once all scripts have completed, come back to the directory from which this script was launched.
+cd $OLDPWD
+
 newrootsize=$(ls -hs "${imagename}" | cut -f1 -d' ')
-echo $imagename was built successfully; echo
-echo Size of $imagename is ${newrootsize}; echo
+relativeimage=$(realpath --relative-to="$PWD" "$imagename")
+echo $relativeimage was built successfully; echo
+echo Size of $relativeimage is ${newrootsize}; echo
