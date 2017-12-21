@@ -40,7 +40,7 @@ fi
 
 # Install packages from the AUR
 # This is optional, and will only run if an AUR package list is set in the config file passed to this script.
-[ $aurlist ] && ./aur-install -l "aurlist" "${workdir}/root"
+[ $aurlist ] && ./aur-install -l "$aurlist" "${workdir}/root"
 
 # Set gsettings keys to enable Orca
 # This is optional, and cannot run on a text only system.
