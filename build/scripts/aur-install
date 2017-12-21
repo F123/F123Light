@@ -65,7 +65,7 @@ for package in $(cat "$packagelist"); do
 	chroot "${newroot} /bin/bash -c \
 		"{
 			cd /aur/$package;
-			pacman -U \*.tar.xz;
+			pacman -U \*.tar.xz --noconfirm --noprogressbar;
 		}"
 done
 
