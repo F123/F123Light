@@ -62,7 +62,7 @@ cd /aur;
 			cd $package;
 			makepkg;
 		}"
-	chroot "${newroot}" /bin/bash -c \
+	arch-chroot "${newroot}" /bin/bash -c \
 		"{
 			cd /aur/$package;
 			pacman -U *pkg.tar.xz --noconfirm --noprogressbar;
