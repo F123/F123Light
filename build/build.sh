@@ -38,6 +38,10 @@ fi
 # Configure the base system: hostname, username, passwords, services
 ./config-base -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
 
+# Install packages from the AUR
+# This is optional, and will only run if an AUR package list is set in the config file passed to this script.
+[ $aurlist ] && ./aur-install -l "aurlist" "${workdir}/root"
+
 # Set gsettings keys to enable Orca
 # This is optional, and cannot run on a text only system.
 [ $desktopaccess ] && ./orca-gsettings "Rworkdir"
