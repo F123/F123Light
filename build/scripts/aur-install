@@ -65,7 +65,7 @@ cd /aur;
 	chroot "${newroot}" /bin/bash -c \
 		"{
 			cd /aur/$package;
-			pacman -U \*.tar.xz --noconfirm --noprogressbar;
+			pacman -U *pkg.tar.xz --noconfirm --noprogressbar;
 		}"
 done
 
