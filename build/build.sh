@@ -26,7 +26,8 @@ cd scripts
 # There is not yet a facility to complete a half-built failed image.
 if [ -d "$workdir" ]; then
 	./rpi-image-tool -C "$workdir" || true
-	rm -R "$workdir"
+	# Don't remove an otherwise empty work directory if a pacman cache is present
+	[ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 fi
 
 # Start by creating an empty image.
