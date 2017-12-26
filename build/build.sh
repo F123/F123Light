@@ -49,7 +49,7 @@ fi
 
 # Unmount the image file
 ./rpi-image-tool -C "$workdir"
-Keep the work directory if a pacman cache exists, otherwise remove it
+# Keep the work directory if a pacman cache exists, otherwise remove it
 [ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 
 # Once all scripts have completed, come back to the directory from which this script was launched.
