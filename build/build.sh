@@ -27,7 +27,7 @@ cd scripts
 if [ -d "$workdir" ]; then
 	./rpi-image-tool -C "$workdir" || true
 	# Don't remove an otherwise empty work directory if a pacman cache is present
-	[ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
+	#[ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 fi
 
 # Start by creating an empty image.
@@ -50,7 +50,7 @@ fi
 # Unmount the image file
 ./rpi-image-tool -C "$workdir"
 # Keep the work directory if a pacman cache exists, otherwise remove it
-[ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
+#[ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 
 # Once all scripts have completed, come back to the directory from which this script was launched.
 cd $OLDPWD
