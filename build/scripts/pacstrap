@@ -14,12 +14,16 @@ set -e
 msg=$(gettext "This script must be run with root privilages")
 (( EUID == 0 )) || die "$msg"
 
+cache=
 directory=0
 packagelist=
 
-while getopts ':dhl:' flag
+while getopts ':c:dhl:' flag
 do
 case $flag in
+c)
+	cache="--cachedir=\"$OPTARG\""
+;;
 d)
 directory=1
 ;;
@@ -66,7 +70,7 @@ else
 echo "Pacstrapping in ${newroot} mount-point"
 fi
 
-pacstrap -C ../pacman/pacman.rpi.conf ${optiond} "${newroot}" --needed --noprogressbar "${packages[@]}"
+pacstrap -C ../pacman/pacman.rpi.conf ${optiond} "${newroot}" $cache --needed --noprogressbar "${packages[@]}"
 
 
 echo done

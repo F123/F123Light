@@ -33,7 +33,7 @@ fi
 ./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize" -b "$bootlabel" -r "$rootlabel"
 
 # Install packages available from the official ALARM repositories.
-./pacstrap -l "$packagelist" "$workdir/root"
+./pacstrap -l "$packagelist" "$workdir/root" -c "${workdir}/pacman-cache"
 
 # Configure the base system: hostname, username, passwords, services
 ./config-base -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
@@ -46,9 +46,10 @@ fi
 # This is optional, and cannot run on a text only system.
 [ $desktopaccess ] && ./orca-gsettings "${workdir}/root"
 
-# Unmount the image file and remove the emptied work directory
+# Unmount the image file
 ./rpi-image-tool -C "$workdir"
-rm -R "$workdir"
+Keep the work directory if a pacman cache exists, otherwise remove it
+[ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 
 # Once all scripts have completed, come back to the directory from which this script was launched.
 cd $OLDPWD
