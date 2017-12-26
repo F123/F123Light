@@ -34,7 +34,7 @@ fi
 ./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize" -b "$bootlabel" -r "$rootlabel"
 
 # Install packages available from the official ALARM repositories.
-./pacstrap -l "$packagelist" "$workdir/root" -c "${workdir}/pacman-cache"
+./pacstrap -l "$packagelist"  -c "${workdir}/pacman-cache" "$workdir/root"
 
 # Configure the base system: hostname, username, passwords, services
 ./config-base -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
