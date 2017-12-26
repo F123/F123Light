@@ -22,8 +22,8 @@ fi
 # All build stage scripts run from the scripts directory underneath the directory where this build script resides.
 cd scripts
 
-# Before building an image, we must be sure that the work directory does not exist.
-# There is not yet a facility to complete a half-built failed image.
+# Before building an image, we must be sure that the work directory is clean except for a package cache.
+# There is not yet a facility to complete a half-built failed image, but we can cache software packages.
 if [ -d "$workdir" ]; then
 	./rpi-image-tool -C "$workdir" || true
 	# Don't remove an otherwise empty work directory if a pacman cache is present
