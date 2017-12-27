@@ -20,4 +20,7 @@ arch-chroot "${newroot}" sudo -u \#1000 gsettings set org.mate.interface accessi
 # Make Orca start automatically
 arch-chroot "${newroot}" sudo -u \#1000 gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
 # Disable screen locking by default
-gsettings set org.mate.screensaver lock-enabled false
+arch-chroot "$newroot" sudo -u \#1000 gsettings set org.mate.screensaver lock-enabled false
+# Set the MATE desktop background
+# Hard code it for now, for testing purposes, but it is to be a config option if it works.
+arch-chroot "$newroot" sudo -u \#1000 gsettings set org.mate.background picture-filename /usr/share/backgrounds/mate/F123/logo.png
