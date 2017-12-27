@@ -22,7 +22,7 @@ while getopts ':c:dhl:' flag
 do
 case $flag in
 c)
-	cache="--cachedir=\"$OPTARG\""
+	cache="--cachedir=$OPTARG"
 ;;
 d)
 directory=1
