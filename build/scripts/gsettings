@@ -17,9 +17,7 @@ newroot=$1
 
 # turn on MATE accessibility
 arch-chroot "${newroot}" sudo -u \#1000 gsettings set org.mate.interface accessibility true"
-# The most recent dbus-daemon, started by dbus-launch above, must be killed in order to unmount the image root partition.
-#pkill -n dbus-daemon
 # Make Orca start automatically
 arch-chroot "${newroot}" sudo -u \#1000 gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
-# Kill the most recent dbus-daemon again
-#pkill -n dbus-daemon
+# Disable screen locking by default
+gsettings set org.mate.screensaver lock-enabled false
