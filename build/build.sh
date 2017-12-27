@@ -45,7 +45,7 @@ fi
 
 # Set gsettings keys to enable Orca
 # This is optional, and cannot run on a text only system.
-[ $desktopaccess ] && ./orca-gsettings "${workdir}/root"
+[ $gsettings ] && ./gsettings "${workdir}/root"
 
 # Unmount the image file
 ./rpi-image-tool -C "$workdir"
