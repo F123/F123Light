@@ -16,11 +16,12 @@ fi
 newroot=$1
 
 # turn on MATE accessibility
-arch-chroot "${newroot}" sudo -u \#1000 /bin/bash -c "gsettings set org.mate.interface accessibility true"
+chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.interface accessibility true"
+pkill -n dbus-daemon
+
 # Make Orca start automatically
-arch-chroot "${newroot}" sudo -u \#1000 /bin/bash -c "gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
-# Disable screen locking by default
-arch-chroot "$newroot" sudo -u \#1000 /bin/bash -c "gsettings set org.mate.screensaver lock-enabled false"
-# Set the MATE desktop background
-# Hard code it for now, for testing purposes, but it is to be a config option if it works.
-arch-chroot "$newroot" sudo -u \#1000 /bin/bash -c "gsettings set org.mate.background picture-filename /usr/share/backgrounds/mate/F123/logo.png"
+chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"# Disable screen locking by default
+pkill -n dbus-daemon
+
+chroot "$newroot" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.screensaver lock-enabled false"
+pkill -n dbus-daemon
