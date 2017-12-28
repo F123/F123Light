@@ -20,8 +20,10 @@ chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.m
 pkill -n dbus-daemon
 
 # Make Orca start automatically
-chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"# Disable screen locking by default
+chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
+
 pkill -n dbus-daemon
 
+# Disable screen locking by default
 chroot "$newroot" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.screensaver lock-enabled false"
 pkill -n dbus-daemon
