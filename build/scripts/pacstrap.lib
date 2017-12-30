@@ -2,7 +2,9 @@
 
 usage() {
 	scriptname=$0
-	echo -e $(gettext "Usage: $scriptname")
+	echo $(gettext "Usage:")
+	echo "sudo $scriptname "
+
 } >&2
 
 
