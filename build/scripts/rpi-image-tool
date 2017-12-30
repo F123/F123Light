@@ -6,7 +6,7 @@ export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
 
-. ./rpi-image-tool.lib
+. ./functions
 
 
 usage() {
