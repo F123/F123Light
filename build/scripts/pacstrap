@@ -6,7 +6,7 @@ export TEXTDOMAINDIR=./locale
 
 . gettext.sh
 
-. ./pacstrap.lib
+. ./functions
 
 
 set -e
