@@ -1,28 +1,30 @@
-
-
 usage() {
 	scriptname=$0
 	echo $(gettext "Usage:")
 	echo "sudo $scriptname "
 
-} >&2
-
-
+} >&2 # usage
 
 out() {
 	printf "$1 $2\n" "${@:3}"
-}
+} # out
 
 error() {
 	out "ERROR:" "$@"
-} >&2
+} >&2 # error
 
 die() {
 	error "$@"
 	usage
 	exit 1
-}
+} # die
 
+check_deps () {
+	[ -f /usr/bin/parted ] || pacman -S parted --noconfirm --noprogressbar
+	[ -f /usr/bin/pacstrap ] || pacman -S arch-install-scripts --noconfirm --noprogressbar
+	[ -f /usr/bin/partx ] || pacman -S util-linux --noconfirm --noprogressbar
+	[ -f /usr/bin/dbus-launch ] || pacman -S dbus --noconfirm --noprogressbar
+} # check_deps
 
 add_user() {
 	local chroot_=$1
@@ -31,7 +33,6 @@ add_user() {
 	echo $(eval_gettext "Add user \${username}")
 	input="useradd -m -g users -G wheel,storage,power,uucp,audio -s /bin/bash ${username}"
 	chroot "${chroot_}" /bin/bash -c "${input}"
-
 } # add_user
 
 set_password() {
@@ -42,9 +43,7 @@ set_password() {
 	echo $(eval_gettext "Setting password for user \${username}")
 	input="echo -e \"${userpwd}\n${userpwd}\n\" | passwd ${username}"
 	chroot "${chroot_}" /bin/bash -c "${input}"
-
 } # set_password
-
 
 manage_service() {
 	local chroot_=$1
@@ -55,14 +54,12 @@ manage_service() {
 	#input="which ${service} && systemctl ${operation} ${service}"
 	#chroot "${chroot_}" /bin/bash -c \"${input}\""
 	chroot "${chroot_}" systemctl "${operation}" "${service}"
-
 } # manage_service
 
- 
 check_root() {
 	(( EUID == 0 )) || return 1
 	return 0
-}
+} # check_root
 
 clean_up() {
 	local WORKDIR=${1}
@@ -77,7 +74,7 @@ clean_up() {
 	fi
 
 	rm ${WORKDIR}/rpi-image-tool-mount-points
-}
+} # clean_up
 
 delete_partitions() {
 	local DEVICE=${1}
@@ -86,7 +83,7 @@ delete_partitions() {
 	do
 		parted ${DEVICE} -- rm ${PART} >/dev/null
 	done
-}
+} # delete_partitions
 
 loop_devices() {
 	local WORKDIR=${1}
@@ -100,7 +97,7 @@ loop_devices() {
 	ROOTP=${LOOPDEVICE}p2
 	eval $__BOOTP="'$BOOTP'"
 	eval $__ROOTP="'$ROOTP'"
-}
+} # loop_devices
 
 mount_device() {
 	local WORKDIR=${1}
@@ -114,7 +111,7 @@ mount_device() {
 	ROOTP=${DEVICE}2
 	#sleep 2
 	mount_partitions ${WORKDIR} ${BOOTP} ${ROOTP} ${BOOTMP} ${ROOTMP}
-}
+} # mount_device
 
 mount_image() {
 	local WORKDIR=${1}
@@ -126,9 +123,8 @@ mount_image() {
 	echo $(gettext "Making the work directory if it doesn't exist") ; echo
 	[ -d "${WORKDIR}" ] || mkdir -p "${WORKDIR}"
 	loop_devices ${WORKDIR} ${IMAGEFILE} BOOTP ROOTP
-	#sleep 5
 	mount_partitions ${WORKDIR} ${BOOTP} ${ROOTP} ${BOOTMP} ${ROOTMP}
-}
+} # mount_image
 
 mount_partitions() {
 	local WORKDIR=${1}
@@ -149,7 +145,7 @@ mount_partitions() {
 	REALROOTMOUNTPOINT=$(realpath ${WORKDIR}/${ROOTMP})
 	REALBOOTMOUNTPOINT=$(realpath ${WORKDIR}/${ROOTMP}/${BOOTMP})
 	echo -e "1:${BOOTP}:${REALBOOTMOUNTPOINT}\n2:${ROOTP}:${REALROOTMOUNTPOINT}" > ${WORKDIR}/rpi-image-tool-mount-points
-}
+} # mount_partitions
 
 new_image() {
 	local WORKDIR=${1}
@@ -183,14 +179,13 @@ new_image() {
 	loop_devices ${WORKDIR} ${IMAGEFILE} BOOTP ROOTP
 	echo $(eval_gettext "Boot partition is \$BOOTP") ; echo
 	echo $(eval_gettext "Root partition is \$ROOTP}") ; echo
-	#sleep 5
 
 	echo $(gettext "Making file systems") ; echo
 	mkfs.vfat -n ${BOOTLABEL} ${BOOTP}
 	mkfs.ext4 -L ${ROOTLABEL} ${ROOTP}
 
 	mount_partitions ${WORKDIR} ${BOOTP} ${ROOTP} ${BOOTMP} ${ROOTMP}
-}
+} # new_image
 
 prepare_device() {
 	local WORKDIR=${1}
@@ -214,14 +209,13 @@ prepare_device() {
 	parted "${DEVICE}" --script -- mkpart primary ext4 ${SPLIT} -1
 	echo $(eval_gettext "Boot partition is \${DEVICE}1") ; echo
 	echo $(eval_gettext "Root partition is \${DEVICE}2") ; echo
-	#sleep 2
 
 	echo $(gettext "Making file systems") ; echo
 	mkfs.vfat ${DEVICE}1
 	mkfs.ext4 ${DEVICE}2
 
 	mount_partitions ${WORKDIR} ${DEVICE}1 ${DEVICE}2 ${BOOTMP} ${ROOTMP}
-}
+} # prepare_device
 
 remove_loop_devices() {
 	local WORKDIR=${1}	
@@ -231,7 +225,7 @@ remove_loop_devices() {
 	LOOP=${FIRSTPART%%p1}
 	echo $(eval_gettext "Removing loop device \${LOOP}") ; echo
 	losetup -d "${LOOP}"
-}
+} # remove_loop_devices
 
 remove_mount_points() {
 	local WORKDIR=${1}
@@ -243,9 +237,9 @@ remove_mount_points() {
 		echo $(eval_gettext "Removing \$MOUNTPOINT") ; echo
 		[ -d "${MOUNTPOINT}" ] && rmdir "${MOUNTPOINT}"
 	done
-}
+} # remove_mount_points
 
-un_mount_partitions() {
+unmount_partitions() {
 	local WORKDIR=${1}
 
 	if [ ! -f "${WORKDIR}/rpi-image-tool-mount-points" ]; then
@@ -260,7 +254,7 @@ un_mount_partitions() {
 		echo $(eval_gettext "umount \$MOUNTPOINT") ; echo
 		umount "${MOUNTPOINT}"
 	done
-}
+} # unmount partitions
 
 validate_blockcount() {
 	echo "$BLOCKCOUNT" | grep "^[0-9][0-9]*$" >/dev/null
@@ -268,7 +262,7 @@ validate_blockcount() {
 		echo $(gettext "Bad block count") ; echo
 		usage
 	fi
-}
+} # validate_blockcount() {
 
 validate_blocksize() {
 	declare -r BLOCKSIZE=${1}
@@ -281,7 +275,7 @@ validate_blocksize() {
 			exit 1
 		;;
 	esac
-}
+} # validate_blocksize() {
 
 validate_mountpoint() {
 	declare -r MOUNTPOINT=${1}
@@ -290,7 +284,7 @@ validate_mountpoint() {
 		echo $(gettext "Bad mount-point") ; echo
 		exit 1
 	fi
-}
+} # validate_mountpoint() {
 
 validate_split() {
 	local SPLIT=${1}
@@ -299,4 +293,4 @@ validate_split() {
 		echo $(gettext "Bad split") ; echo
 		usage
 	fi
-}
+} # validate_split() {
