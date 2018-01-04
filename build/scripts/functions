@@ -26,6 +26,12 @@ check_deps () {
 	[ -f /usr/bin/dbus-launch ] || pacman -S dbus --noconfirm --noprogressbar
 } # check_deps
 
+install_dep () {
+	local package=$1
+	echo $(eval_gettext "Installing ${package}...")
+	pacman -S $package --noconfirm --noprogressbar >/dev/null
+} # install_dep
+
 add_user() {
 	local chroot_=$1
 	local username=$2
