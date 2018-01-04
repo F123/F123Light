@@ -5,6 +5,9 @@
 
 set -e
 
+# Load the common functions
+. scripts/functions
+
 # Die if not running as root
 [ $UID = 0 ] || { echo This script must run as root or via sudo.; exit 1; }
 
@@ -20,7 +23,11 @@ else
 fi
 
 # All build stage scripts run from the scripts directory underneath the directory where this build script resides.
+# todo: Call the loaded functions as needed rather than calling the stage scripts.
 cd scripts
+
+# Check for dependencies and install any that are missing.
+check_deps
 
 # Before building an image, we must be sure that the work directory is clean except for a package cache.
 # There is not yet a facility to complete a half-built failed image, but we can cache software packages.
