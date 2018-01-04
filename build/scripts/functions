@@ -20,10 +20,10 @@ die() {
 } # die
 
 check_deps () {
-	[ -f /usr/bin/parted ] || pacman -S parted --noconfirm --noprogressbar
-	[ -f /usr/bin/pacstrap ] || pacman -S arch-install-scripts --noconfirm --noprogressbar
-	[ -f /usr/bin/partx ] || pacman -S util-linux --noconfirm --noprogressbar
-	[ -f /usr/bin/dbus-launch ] || pacman -S dbus --noconfirm --noprogressbar
+	[ -f /usr/bin/parted ] || install_dep parted
+	[ -f /usr/bin/pacstrap ] || install_dep arch-install-scripts
+	[ -f /usr/bin/partx ] || pacman install_dep util-linux
+	[ -f /usr/bin/dbus-launch ] || install_dep dbus
 } # check_deps
 
 install_dep () {
