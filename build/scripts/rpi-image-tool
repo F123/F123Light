@@ -2,7 +2,7 @@
 
 export TEXTDOMAIN=rpi-image-tool
 #export TEXTDOMAINDIR=$PWD/locale
-export TEXTDOMAINDIR=/usr/local/share/locale
+export TEXTDOMAINDIR=./locale
 
 . gettext.sh
 

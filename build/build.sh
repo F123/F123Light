@@ -3,6 +3,11 @@
 # Automate Raspberry Pi image builds
 # Take a config file on the command line and pass its options to the various stages of the build process
 
+export TEXTDOMAIN=build.sh
+export TEXTDOMAINDIR=./locale
+
+. gettext.sh
+
 set -e
 
 # Load the common functions

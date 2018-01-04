@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export TEXTDOMAIN=pacstrap
-export TEXTDOMAINDIR=./locale
+export TEXTDOMAIN=aur-install
+export TEXTDOMAINDIR=../locale
 #export TEXTDOMAINDIR=/usr/local/share/locale
 
 . gettext.sh
