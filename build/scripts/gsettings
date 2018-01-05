@@ -1,6 +1,16 @@
 #!/bin/bash
 # Gsettings commands to enable desktop accessibility and the Orca screen reader
 
+export TEXTDOMAIN=gsettings
+export TEXTDOMAINDIR=../locale
+
+. gettext.sh
+
+set -e
+
+# Load the common functions
+. ./functions
+
 # Die if not running with root privileges
 if ! check_root ; then
 	PROGNAME=$0
