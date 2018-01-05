@@ -41,7 +41,7 @@ check_deps
 # Before building an image, we must be sure that the work directory is clean except for a package cache.
 # There is not yet a facility to complete a half-built failed image, but we can cache software packages.
 if [ -d "$workdir" ]; then
-	./rpi-image-tool -C "$workdir" || true
+	clean_up "$workdir" || true
 	# Don't remove an otherwise empty work directory if a pacman cache is present
 	[ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 fi
@@ -64,7 +64,7 @@ fi
 [ $gsettings ] && ./gsettings "${workdir}/root"
 
 # Unmount the image file
-./rpi-image-tool -C "$workdir"
+clean_up "$workdir"
 # Keep the work directory if a pacman cache exists, otherwise remove it
 [ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 
