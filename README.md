@@ -8,8 +8,10 @@ This build system started as an adaptation of the [f123pi](https://github.com/f1
 # Dependencies
 In order to build images using this system, you will need the following Arch packages:
 * util-linux: for partition and loop device support, (installed on most systems)
+* parted: for writing and manipulating partitions, installed on most systems
 * arch-install-scripts: to bootstrapp the OS into a mounted image, (most likely not preinstalled)
 * dbus: to set gsettings keys if a graphical desktop is being configured, (a dependency of systemd, installed on most systems)
+The build script will automatically install any dependencies it finds missing.
 # Installation
 No installation beyond the dependencies listed above is required in order to use this build system. Just clone the git repository, cd into the build directory, usually F123Light/build and run the build script as described below.
 # The Build Directory
