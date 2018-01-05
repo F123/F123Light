@@ -14,7 +14,11 @@ set -e
 . scripts/functions
 
 # Die if not running as root
-[ $UID = 0 ] || { echo This script must run as root or via sudo.; exit 1; }
+if ! check_root ; then
+	PROGNAME=$0
+	echo $(eval_gettext "Script must be run as root, try: sudo \$PROGNAME") ; echo
+	exit 1
+fi
 
 # The config file should be the only command line argument. We die if no config is specified.
 if [ -f "$1" ]; then
