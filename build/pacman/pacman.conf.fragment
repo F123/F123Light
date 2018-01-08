@@ -1,0 +1,6 @@
+
+
+[f123pi]
+SigLevel = Optional TrustAll
+Server = file:///opt/f123pi
+

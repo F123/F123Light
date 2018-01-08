@@ -1,0 +1,8 @@
+# Mike's usual working patterns
+res
+*~
+
+# Pi .img files
+*.img
+
+

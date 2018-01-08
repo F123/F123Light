@@ -1,0 +1,7 @@
+base
+linux-raspberrypi
+linux-raspberrypi-headers
+ntp
+openssh
+raspberrypi-firmware
+sudo

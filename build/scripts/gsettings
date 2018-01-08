@@ -1,0 +1,46 @@
+#!/bin/bash
+# Gsettings commands to enable desktop accessibility and the Orca screen reader
+
+export TEXTDOMAIN=gsettings
+export TEXTDOMAINDIR=../locale
+
+. gettext.sh
+
+set -e
+
+# Load the common functions
+. ./functions
+
+# Die if not running with root privileges
+if ! check_root ; then
+	PROGNAME=$0
+	echo $(eval_gettext "Script must be run as root, try: sudo \$PROGNAME") ; echo
+	exit 1
+fi
+
+# die if this script is called with no argument.
+if [ -z $1 ]; then
+	echo No root specified
+	exit 1
+fi
+
+# Die if called with more than one argument
+if [ $2 ]; then
+	echo Too many arguments
+	exit 1
+fi
+
+newroot=$1
+
+# turn on MATE accessibility
+chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.interface accessibility true"
+pkill -n dbus-daemon
+
+# Make Orca start automatically
+chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
+
+pkill -n dbus-daemon
+
+# Disable screen locking by default
+chroot "$newroot" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.screensaver lock-enabled false"
+pkill -n dbus-daemon

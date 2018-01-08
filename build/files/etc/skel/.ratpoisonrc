@@ -1,0 +1,105 @@
+
+# Miscellaneous
+startup_message off
+set winname title
+set bgcolor #000000
+set fgcolor #FFFFFF
+set font -*-terminus-medium-r-normal-*-24-*-*-*-*-*-*-*
+set waitcursor 1
+banish
+
+# Unbind section
+unbind C-A
+unbind A
+unbind C-a
+unbind a
+unbind c
+unbind C-c
+unbind C-f
+unbind F
+unbind r
+unbind C-r
+unbind S
+unbind C-S
+unbind s
+unbind C-s
+unbind C-t
+unbind C-v
+unbind v
+unbind C-w
+unbind C-Down
+unbind Down
+unbind C-exclam
+unbind exclam
+unbind C-Left
+unbind Left
+unbind question
+unbind C-Right
+unbind Right
+unbind C-Up
+unbind Up
+unbind C-apostrophe
+unbind apostrophe
+unbind colon
+unbind t
+
+# Key binding section
+escape C-Escape
+# Alt+f2 executes the run dialog
+definekey top M-F2 run_dialog
+# Alt+tab switches through open windows
+definekey top M-Tab next
+definekey top M-ISO_Left_Tab prev
+bind exclam run_dialog
+bind question ratpoison_keybindings
+# Music player bindings:
+#bind M-Z music_player_previous_track
+#bind M-X music_player_play
+#bind M-C music_player_pause
+#bind M-V music_player_stop
+#bind M-B music_player_next_track
+#bind M-underscore music_player_decrease_volume
+#bind M-plus music_player_increase_volume
+bind f exec /usr/bin/caja
+#bind w exec /usr/bin/firefox
+#bind W exec /usr/bin/firefox $(ratpoison -c getsel) # Open selected URI in web browser
+bind e exec /usr/bin/pluma
+bind c exec /usr/bin/mate-terminal
+bind C-c exec /usr/bin/mate-terminal
+bind C-exclam run_in_terminal_dialog
+bind C-A set_window_name
+bind A set_window_name
+bind C-a show_date
+bind a show_date
+bind C-t show_date
+bind O exec /usr/bin/orca -r # Restart Orca
+bind C-v ratpoison_version
+bind v ratpoison_version
+bind C-apostrophe window_menu
+bind apostrophe window_menu
+bind colon run_ratpoison_command
+bind C-colon reload_ratpoison_configuration
+bind C-M-r restart
+bind C-M-q quit
+
+# Autostart section
+exec /usr/bin/orca
+exec if [ "$(gsettings get org.gnome.desktop.a11y.applications screen-reader-enabled)" != "true" ]; then gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true&& yad --info --timeout 5 --no-buttons --title 'notification' --text "QT5 accessibility enabled. You need to restart ratpoison for the changes to take affect.";fi
+
+# Alias Section
+alias ratpoison_keybindings exec f=$(mktemp);ratpoison -c "help root" > $f && yad --text-info --show-cursor --title "Ratpoison Keybindings" --button "Close:0" --filename "$f";rm "$f"
+#alias music_player_previous_track exec /usr/bin/moc -r # previous track
+#alias music_player_play exec /usr/bin/moc -p # play
+#alias music_player_pause exec /usr/bin/moc -G # pause
+#alias music_player_stop exec /usr/bin/moc -s # stop
+#alias music_player_next_track exec /usr/bin/moc -f # next track
+#alias music_player_decrease_volume exec /usr/bin/moc -v -10 # decrease volume
+#alias music_player_increase_volume exec /usr/bin/moc -v +10 # increase volume
+alias run_dialog exec historyPath="${XDG_CONFIG_HOME:-$HOME/.config}/strychnine";if ! [ -d "$historyPath" ]; then mkdir -p "$historyPath";fi;write_history(){ oldHistory="$(grep -v "$txt" "$historyPath/history" | head -n 49)";echo -e "$txt\n$oldHistory" | sed 's/^$//g' > "$historyPath/history"; };if [ -f "$historyPath/history" ]; then txt=$(yad --entry --editable --title "Ratpoison" --text "Execute program or enter file" --button "Open:0" --separator "\n" --rest "$historyPath/history");else txt=$(yad --entry --title "Ratpoison" --text "Execute program or enter file" --button "Open:0");fi;if [ -z "$txt" ]; then exit 0;fi;if [[ "$txt" =~ ^ftp://|http://|https://|www.* ]]; then /usr/bin/firefox $txt;write_history;exit 0;fi;if [[ "$txt" =~ ^mailto://.* ]]; then xdg-email $txt;write_history;exit 0;fi;if [[ "$txt" =~ ^man://.* ]]; then eval "${txt/:\/\// }" | yad --text-info --show-cursor --button "Close:0" --title "Ratpoison" -;write_history;exit 0;fi;if command -v "$(echo "$txt" | cut -d " " -f1)" &> /dev/null ; then eval $txt& else (xdg-open $txt || /usr/bin/nautilus)&fi;write_history;exit 0
+alias run_in_terminal_dialog exec c="$(yad --entry --title "Ratpoison" --text "Enter command:")" && /usr/bin/gnome-terminal -e $c
+alias set_window_name exec t="$(yad --entry --title "Ratpoison" --text "Enter window name") && ratpoison -c "title $t"
+alias show_date exec yad --info --timeout 5 --no-buttons --title 'notification' --text "$(date +"%A, %B %d, %Y%n%I:%M%p")"
+alias ratpoison_version exec yad --info --timeout 5 --no-buttons --title 'notification' --text "$(ratpoison -c "version")"
+alias window_menu exec ifs="$IFS";IFS=$'\n';w="$(yad --list --title "Ratpoison" --text "Select Window" --column "Select" $(ratpoison -c "windows"))";IFS="$ifs";ratpoison -c "select ${w:0:1}"
+alias run_ratpoison_command exec c="$(yad --entry --title "Ratpoison" --text="Enter Ratpoison command:")" && ratpoison -c "$c"
+alias reload_ratpoison_configuration exec ratpoison -c "source /home/mike/.ratpoisonrc"&&yad --info --timeout 5 --no-buttons --title 'notification' --text "Ratpoison configuration reloaded"

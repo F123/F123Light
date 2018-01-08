@@ -1,0 +1,68 @@
+# F123 pacstrap-f123pi - Bootstrap an Arch image for the Raspberry Pi
+# Copyright (C) 2017 THE Mike Ray
+# This file is distributed under the same license as the f123pi package.
+# Mike Ray <mike.ray@btinternet.com>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0.0\n"
+"POT-Creation-Date: 2017-10-19 03:55+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../bootstrap-f123pi:12
+msgid "Usage: $scriptname"
+msgstr ""
+"Usage: $scriptname [ options ... ] { directory | mount-point }\\n\\n"
+"Options:\\n\\n"
+"	-h\\n\\n"
+"	Show usage and exit.\\n\\n"
+"	-d\\n\\n"
+"	Installation directory is not a mount-point, but an ordinary directory.\\n\\n"
+"	-l <package-list>\\n\\n"
+"	Package list. A file containing one line with each package or meta-package to install.\\n\\n"
+"	-o <hostname>\\n\\n"
+"	Host name to write to /etc/hostname.\\n\\n"
+"	Default is f123pi.\\n\\n"
+"	-p <password>\\n\\n"
+"	User password. The password for the one ordinary user being created.\\n\\n"
+"	Default is raspberry.\\n\\n"
+"	-r <root-password>\\n\\n"
+"	Root password.\\n\\n"
+"	Default is root.\\n\\n"
+"	-u <user-name>\\n\\n"
+"	Name of ordinary user to create.\\n\\n"
+"	Default is f123.\\n\\n"
+"In all cases arguments to options are mandatory.\\n\\n"
+"User name and passwords must comply with valid values according to Linux standards."
+
+
+
+#: ../bootstrap-f123pi:50
+msgid "Option requires an argument"
+msgstr ""
+
+#: ../bootstrap-f123pi:54
+msgid "Invalid option"
+msgstr ""
+
+
+#: ../pacstrap-f123pi.lib:28
+#, sh-format
+msgid "Add user ${username}"
+msgstr ""
+
+#: ../pacstrap-f123pi.lib:39
+#, sh-format
+msgid "Setting password for user ${username}"
+msgstr ""
+
+#: ../pacstrap-f123pi.lib:51
+#, sh-format
+msgid "Calling systemctl to ${operation} ${service} service"
+msgstr ""

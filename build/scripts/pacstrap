@@ -1,0 +1,82 @@
+#!/bin/bash
+
+export TEXTDOMAIN=pacstrap
+export TEXTDOMAINDIR=../locale
+#export TEXTDOMAINDIR=/usr/local/share/locale
+
+. gettext.sh
+
+. ./functions
+
+
+set -e
+
+if ! check_root ; then
+	PROGNAME=$0
+	echo $(eval_gettext "Script must be run as root, try: sudo \$PROGNAME") ; echo
+	exit 1
+fi
+
+cache=
+directory=0
+packagelist=
+
+while getopts ':c:dhl:' flag
+do
+case $flag in
+c)
+	cache="--cachedir=$OPTARG"
+;;
+d)
+directory=1
+;;
+h)
+usage
+exit 0
+;;
+l)
+packagelist=$OPTARG
+;;
+:)
+msg=$(gettext "Option requires an argument")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
+;;
+?)
+msg=$(gettext "Invalid option")
+die '%s: %s -- '\''%s'\' "${0##*/}" "${msg}" "$OPTARG"
+;;
+esac
+done
+
+shift $(( OPTIND - 1 ))
+
+(( $# )) || die "No root directory specified"
+
+newroot=$1; shift
+
+[[ -z "${packagelist}" ]] && die "No package list supplied"
+[[ -f "${packagelist}" ]] || die "Package list ${packagelist} does not exist"
+[[ -r "${packagelist}" ]] || die "Package list ${packagelist} is not readable"
+
+
+mapfile -t packages < "${packagelist}"
+
+[[ -d $newroot ]] || die "%s is not a directory" "$newroot"
+if ! mountpoint -q "${newroot}" && (( ! directory )); then
+die '%s is not a mountpoint!' "$newroot"
+fi
+
+if (( directory )) ; then
+echo "Pacstrapping in ${newroot} directory"
+	optiond='-d'
+else
+echo "Pacstrapping in ${newroot} mount-point"
+fi
+
+pacstrap -C ../pacman/pacman.rpi.conf ${optiond} "${newroot}" $cache --needed --noprogressbar "${packages[@]}"
+
+
+echo done
+
+exit 0
+
