@@ -2,7 +2,6 @@ master volume louder,amixer -q set Master 10%+
 master volume softer,amixer -q set Master 10%-
 use calculator,calc
 unit conversions,kies units
-use octave as calculator,octave
 email,alpine
 internet browser,lynx
 look up a word in the dictionary,kies_lookup
@@ -14,7 +13,6 @@ manage your files,kies files
 do Word processing,kies edit
 convert .pdf to html,pickafile kies_pdfconvert
 audio file conversions,kies audio_conversions
-communications menu,kies communications_menu
 view a text or html file,pickafile -b lynx
 view an open document format file,pickafile -b kies_view_odt
 view a Microsoft .doc file,pickafile -b kies_view_doc
