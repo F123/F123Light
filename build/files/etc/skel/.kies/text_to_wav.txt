@@ -1,0 +1,7 @@
+synthesize text to wave with Afrikaans Verster male voice,pickafile -b txt2wav_verster2
+synthesize text to wave with Afrikaans Ewald_biessenbach male voice,pickafile -b txt2wav_ewald_biessenbach
+synthesize text to wave with Afrikaans Nadia voice,pickafile -b txt2wav_nadia
+synthesize text to wave with English male voice,pickafile -b txt2wav_holmes_full
+synthesize text to wave with English Mel voice,pickafile -b txt2wav_mel
+synthesize text to wave with Zulu male voice,pickafile -b txt2wav_johnny
+synthesize text to wave with Xhosa male voice,pickafile -b txt2wav_dumza

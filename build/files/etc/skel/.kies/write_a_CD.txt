@@ -1,0 +1,4 @@
+add an item to write a CD ,kiesadd write_a_CD.txt
+copy an audio CD,kies_copy_audio_cd
+copy a data CD,kies_copy_data_cd
+write an iso image on CD,kies_copy_iso

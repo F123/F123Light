@@ -1,0 +1,9 @@
+bring up the SA-Note manual,lynx /var/www/sa-note/index.html
+volume softer,amixer -q set Master 10%-
+volume louder,amixer -q set Master 10%+
+say current time,date +%H:%M
+say current date,date +%A-%d-%B-%Y
+show my IP address,kies_ipaddr
+activate wifi interface,sudo kies_wifi_on
+deactivate wifi interface,sudo kies_wifi_off
+reset speech,sudo kies_reset_speech

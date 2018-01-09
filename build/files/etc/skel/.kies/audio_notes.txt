@@ -1,0 +1,3 @@
+add an item to audio notes ,kiesadd audio_notes.txt
+edit an existing audio file,pickafile -b dae
+record,pickafile -b dae

@@ -1,0 +1,4 @@
+read epub with Afrikaans voice,pickafile -b -repub kies_read_epub_af
+read epub with English voice,pickafile -b -repub kies_read_epub_en
+read epub with Sepedi voice,pickafile -b -repub kies_read_epub_nso
+read epub with Setswana voice,pickafile -b -repub kies_read_epub_tn

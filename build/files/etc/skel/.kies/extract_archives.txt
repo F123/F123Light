@@ -1,0 +1,8 @@
+extract .zip archive,kies_extractzip
+extract tar.gz or tgz archive,kies_extracttar.gz
+extract tar.bz2 archive,kies_extracttar.bz2
+extract gzip archive,pickafile -m -b -r'gzip' gunzip
+extract bz2 archive,pickafile -m -b -r'bzip2' bunzip2
+extract 7zip archive,kies_extract7z
+extract .rar archive,kies_extractrar
+extract a Microsoft Transport Neutral Encapsulation Format file e.g. winmail.dat,pickafile -b kies_extracttnef

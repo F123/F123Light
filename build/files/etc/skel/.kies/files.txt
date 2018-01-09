@@ -1,0 +1,10 @@
+deactivate android storage device,fusermount -u android
+Activate Android storage device,kies_android_mount
+add an item to files ,kiesadd files.txt
+copy a file or directory,kies_copy
+delete a file or directory,pickafile -b kies_movetotrash
+show size of the trash,kies_trashsize
+retrieve from the trash,kies_getfromtrash
+clean out the trash,kies_cleantrash
+activate first USB storage device,mount stick
+deactivate first uSB storage device,umount stick

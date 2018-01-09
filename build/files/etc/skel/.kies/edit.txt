@@ -1,0 +1,3 @@
+add an item to edit ,kiesadd edit.txt
+create/edit a text file using Joe,pickafile joe
+create/edit a text file using Nano,pickafile nano

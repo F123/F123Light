@@ -1,0 +1,4 @@
+Ewald Biessenbach Afrikaans,pickafile -b document2wav_ewald_biessenbach_nuut
+Rykie Steenkamp Afrikaans,pickafile -b document2wav_rykie_mono
+Verster Palm Afrikaans,pickafile -b document2wav_verster_mono
+Sherlock Holmes English,pickafile -b document2wav_holmes_mono

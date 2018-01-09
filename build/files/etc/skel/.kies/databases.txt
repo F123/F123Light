@@ -1,0 +1,3 @@
+add an item to databases ,kiesadd databases.txt
+create a new database,kies_createtab
+show database list,lynx http://localhost/db/

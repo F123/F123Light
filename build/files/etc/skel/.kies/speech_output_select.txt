@@ -1,0 +1,5 @@
+add an item to speech output select ,kiesadd speech_output_select.txt
+select HLT Afrikaans voice,hlt
+Espeak Afrikaans language,afrikaans
+Via Voice english language,engels
+espeak english voice,espeak

@@ -1,0 +1,11 @@
+add an item to play an audio CD ,kiesadd play_an_audio_CD.txt
+play,cdcd play
+stop,cdcd stop
+next track,cdcd next
+previous track,cdcd prev
+louder,aumix -c +10
+softer,aumix -c -10
+fast forward,cdcd ff
+rewind,cdcd rew
+pause,cdcd pause
+continue,cdcd resume

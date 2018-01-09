@@ -1,0 +1,8 @@
+restart network,sudo /etc/init.d/networking restart
+add an item to communications menu ,kiesadd communications_menu.txt
+show my IP address,sudo kies_ipaddr
+activate ethernet connection,sudo kies_lan_on
+deactivate ethernet connection,sudo kies_lan_off
+activate wifi connection,sudo kies_wifi_on
+deactivate wifi connection,sudo kies_wifi_off
+set up wireless networks,sudo kies_wifi ra0

@@ -1,0 +1,3 @@
+add a new printer,kies_add_printer
+set the default printer,kies_set_default_printer
+alternative and advanced printer configuration,lynx localhost:631/admin

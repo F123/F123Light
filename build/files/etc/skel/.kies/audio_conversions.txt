@@ -1,0 +1,44 @@
+avi to flac audio,pickafile -b kies_avi2flac
+avi to mp3 audio,pickafile -b kies_avi2mp3
+avi to ogg audio,pickafile -b kies_avi2ogg
+avi to wav audio,pickafile -b kies_avi2wav
+flac to mp3 audio,pickafile -b kies_flac2mp3
+flac to ogg audio,pickafile -b kies_flac2ogg
+flac to wav audio,pickafile -b kies_flac2wav
+flv to flac audio,pickafile -b kies_flv2flac
+flv to mp3 audio,pickafile -b kies_flv2mp3
+flv to ogg audio,pickafile -b kies_flv2ogg
+flv to wav audio,pickafile -b kies_flv2wav
+mp3 to flac audio,pickafile -b kies_mp32flac
+mp3 to m4r e.g. Apple ringtone,pickafile -b kies_mp32m4r
+mp3 to ogg audio,pickafile -b kies_mp32ogg
+mp3 to wav audio,pickafile -b kies_mp32wav
+mp4 to flac audio,pickafile -b kies_mp42flac
+mp4 to mp3 audio,pickafile -b kies_mp42mp3
+mp4 to ogg audio,pickafile -b kies_mp42ogg
+mp4 to wav audio,pickafile -b kies_mp42wav
+mpg to flac audio,pickafile -b kies_mpg2flac
+mpg to mp3 audio,pickafile -b kies_mpg2mp3
+mpg to ogg audio,pickafile -b kies_mpg2ogg
+mpg to wav audio,pickafile -b kies_mpg2wav
+ogg to flac audio,pickafile -b kies_ogg2flac
+ogg to m4r e.g. Apple ringtone,pickafile -b kies_ogg2m4r
+ogg to mp3 audio,pickafile -b kies_ogg2mp3
+ogg to wav audio,pickafile -b kies_ogg2wav
+stereo to mono,pickafile -b kies_stereo2mono
+vob to flac audio,pickafile -b kies_vob2flac
+vob to mp3 audio,pickafile -b kies_vob2mp3
+vob to ogg audio,pickafile -b kies_vob2ogg
+vob to wav audio,pickafile -b kies_vob2wav
+wav to flac audio,pickafile -b kies_wav2flac
+wav to m4r e.g. Apple ringtone,pickafile -b kies_wav2m4r
+wav to mp3 audio,pickafile -b kies_wav2mp3
+wav to ogg audio,pickafile -b kies_wav2ogg
+webm to flac audio,pickafile -b kies_webm2flac
+webm to mp3 audio,pickafile -b kies_webm2mp3
+webm to ogg audio,pickafile -b kies_webm2ogg
+webm to wav audio,pickafile -b kies_webm2wav
+wma to flac audio,pickafile -b kies_wma2flac
+wma to mp3 audio,pickafile -b kies_wma2mp3
+wma to ogg audio,pickafile -b kies_wma2ogg
+wma to wav audio,pickafile -b kies_wma2wav

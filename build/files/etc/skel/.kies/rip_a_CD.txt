@@ -1,0 +1,4 @@
+rip a CD to ogg,abcde -c /etc/abcde_ogg.conf
+rip a CD to flac,abcde -c /etc/abcde_flac.conf
+rip a CD to mp3,abcde -c /etc/abcde_mp3.conf
+add an item to rip a CD ,kiesadd rip_a_CD.txt

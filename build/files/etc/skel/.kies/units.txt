@@ -1,0 +1,15 @@
+gallon to litre,kies_units gallon litre
+add an item to unit conversions,kiesadd units.txt
+ounce to gram,kies_units ounce gram
+gram to ounce,kies_units gram ounce
+pound to kilogram,kies_units pound kilogram
+kilogram to pound,kies_units kilogram pound
+milimeter to inch,kies_units mm inch
+inch to milimeter,kies_units inch mm
+feet to meter,kies_units feet meter
+meter to feet,kies_units meter feet
+miles to kilometer,kies_units mile kilometer
+kilometer to miles,kies_units kilometer mile
+Fahrenheit to celsius,kies_units tempF tempC
+Celsius to Fahrenheit,kies_units tempC tempF
+Celsius to Kelvin,kies_units tempC tempK

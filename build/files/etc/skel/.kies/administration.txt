@@ -1,0 +1,10 @@
+terminate realtime remote support session,terminate_remote_support
+request realtime remote support,help_me
+show software image version,kies_show_version
+add an item to administration ,kiesadd administration.txt
+create a new menu,newmenu
+change your password,passwd 
+change the root password,sudo passwd root
+set up your email,kies_configure_email -w
+setup your printer,kies printer_setup
+cold shutdown,sudo poweroff

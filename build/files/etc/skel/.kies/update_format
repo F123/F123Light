@@ -1,0 +1,7 @@
+#!/bin/bash
+cp "$1" "$1".old
+
+cut -f2- -d',' "$1" > tmp.tmp&&\
+rm "$1"&&\
+mv tmp.tmp "$1"&&\
+echo "$1's format is now updated"||echo "format conversion of $1 failled"
