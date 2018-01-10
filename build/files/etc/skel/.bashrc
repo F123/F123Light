@@ -12,4 +12,4 @@ PS1='[\u@\h \W]\$ '
 export HISTCONTROL=ignoreboth
 
 # Load a Kies menu, but only if this is the first shell
-[ SHLVL -eq 1 ] && kiesmenu
+[ $SHLVL -eq 1 ] && kiesmenu
