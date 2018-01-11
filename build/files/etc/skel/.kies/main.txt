@@ -6,6 +6,8 @@ email,alpine
 internet browser,lynx
 look up a word in the dictionary,kies_lookup
 look it up in the on line encyclopedia,kies_wiki_search_online
+Browse the internet with Firefox,startx /usr/bin/kies_firefox
+Manage mail with Thunderbird,startx /usr/bin/kies_thunderbird
 administration menu,kies administration
 search the Internet,kies_search_google
 extract various archives,kies extract_archives
