@@ -1,3 +1,3 @@
-LibreOffice Writer,pickafile startx /usr/bin/kies_lo_writer
-LibreOffice Calc,pickafile startx /usr/bin/kies_lo_calc
+LibreOffice Writer,pickafile -b startx /usr/bin/kies_lo_writer
+LibreOffice Calc,pickafile -b startx /usr/bin/kies_lo_calc
 add an item to Office applications,kiesadd office.txt
