@@ -66,8 +66,8 @@ if [ -d "$workdir" ]; then
 	[ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 fi
 
-# Start by creating an empty image.
-./rpi-image-tool -N "$imagename" -w "$workdir" -c "$imagesize" -b "$bootlabel" -r "$rootlabel"
+# Start by creating an empty image and mounting it.
+new_image $workdir $imagename $bootlabel $rootlabel root/boot root $imagesize 1M 64M
 
 # Install packages available from the official ALARM repositories.
 ./pacstrap -l "$packagelist"  -c "${workdir}/pacman-cache" "$workdir/root"
