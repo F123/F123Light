@@ -72,12 +72,31 @@ new_image $workdir $imagename $bootlabel $rootlabel boot root $imagesize 1M 64M
 # Install packages available from the official ALARM repositories.
 ./pacstrap -l "$packagelist"  -c "${workdir}/pacman-cache" "$workdir/root"
 
-# Configure the base system: hostname, username, passwords
-./config-base -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
+# Set the system hostname
+echo $hostname > $workdir/root/etc/hostname
+
+# The root partition is automatically mounted by systemd. Add only the boot partition information to fstab.
+echo -e "\n/dev/mmcblk0p1  /boot   vfat    defaults        0       0" >> $workdir/root/etc/fstab
+
+# Set the root password
+set_password "${workdir}/root" root "${rootpass}"
+
+# Copy all modified files into the new system
+	cp -R ../files/* "${newroot}"
+
+# Add the regular user and set its password
+add_user "${workdir}/root" "${username}"
+set_password "${workdir}/root" "${username}" "${userpass}"
+
 
 # Install packages from the AUR
 # This is optional, and will only run if an AUR package list is set in the config file passed to this script.
 [ $aurlist ] && ./aur-install -l "$aurlist" "${workdir}/root"
+
+# Enable system services
+for service in $services; do
+	manage_service "${workdir}/root" enable "${service}"
+done
 
 # Set gsettings keys to enable Orca
 # This is optional, and cannot run on a text only system.
