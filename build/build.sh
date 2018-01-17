@@ -67,12 +67,12 @@ if [ -d "$workdir" ]; then
 fi
 
 # Start by creating an empty image and mounting it.
-new_image $workdir $imagename $bootlabel $rootlabel root/boot root $imagesize 1M 64M
+new_image $workdir $imagename $bootlabel $rootlabel boot root $imagesize 1M 64M
 
 # Install packages available from the official ALARM repositories.
 ./pacstrap -l "$packagelist"  -c "${workdir}/pacman-cache" "$workdir/root"
 
-# Configure the base system: hostname, username, passwords, services
+# Configure the base system: hostname, username, passwords
 ./config-base -o $hostname -r "$rootpass" -u $username -p "$userpass" -s "$services" "${workdir}/root"
 
 # Install packages from the AUR
