@@ -290,7 +290,7 @@ validate_blockcount() {
 		echo $(gettext "Bad block count") ; echo
 		usage
 	fi
-} # validate_blockcount() {
+} # validate_blockcount
 
 validate_blocksize() {
 	declare -r BLOCKSIZE=${1}
@@ -303,7 +303,7 @@ validate_blocksize() {
 			exit 1
 		;;
 	esac
-} # validate_blocksize() {
+} # validate_blocksize
 
 validate_mountpoint() {
 	declare -r MOUNTPOINT=${1}
@@ -312,7 +312,7 @@ validate_mountpoint() {
 		echo $(gettext "Bad mount-point") ; echo
 		exit 1
 	fi
-} # validate_mountpoint() {
+} # validate_mountpoint
 
 validate_split() {
 	local SPLIT=${1}
@@ -321,4 +321,4 @@ validate_split() {
 		echo $(gettext "Bad split") ; echo
 		usage
 	fi
-} # validate_split() {
+} # validate_split
