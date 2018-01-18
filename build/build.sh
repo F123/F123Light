@@ -81,6 +81,9 @@ echo -e "\n/dev/mmcblk0p1  /boot   vfat    defaults        0       0" >> $workdi
 # Set the root password
 set_password "${workdir}/root" root "${rootpass}"
 
+# Set the system locale
+set_locale $workdir/root $locale
+
 # Copy all modified files into the new system
 	cp -R ../files/* "${workdir}/root"
 
