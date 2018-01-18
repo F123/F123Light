@@ -58,7 +58,7 @@ Currently not fully implemented: display usage message.
 Configures the base system, including  the hostname, root password, non-root username/password and system services.
 ## Usage ##
 ./config-base -h  
-sudo ./config-base [-o <hostname] [-r <rootpassword>] [-u <username>] [-p <userpassword>] [-s <services>] <systemroot>
+sudo ./config-base [-o <hostname] [-r <rootpassword>] [-u <username>] [-p <userpassword>] <systemroot>
 ## Options and Arguments ##
 *-o <hostname>*  
 The hostname of the installed system. Default is alarmpi.
@@ -71,9 +71,6 @@ The username of the non-root user. Default is alarm.
 
 *-p <userpassword>*  
 The password of the non-root user. Default is alarm.
-
-*-s <services>*  
-A quoted list of system services to be enabled on the installed system at boot time.
 
 *systemroot>*  
 The top level root of the installed system.
@@ -93,6 +90,16 @@ The file containing the list of packages to be built and installed.
 The top level root directory of the installed system.
 *-h*  
 Currently not fully implemented: display usage message.
+# services-enable #
+Enables the specified systemd services in the specified system root.
+## Usage ##
+sudo ./services-enable <systemroot> <service> [service ...]
+## Arguments ##
+*<systemroot>*
+The top level root directory of the installed system.
+
+*<service> [service ...]*
+One or more services to be enabled at boot time. All services must exist on the system image, as systemd is used to enable each service inside of a chroot.
 # gsettings #
 Sets various gsettings keys. This script must only be run if a gsettings compatible desktop has been installed.
 ## usage ##
