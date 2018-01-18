@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# config-base
+#
+# Copyright 2018, F123 Consulting, <information@f123.org>
+# Copyright 2018, Kyle, <kyle@free2.ml>
+#
+# This is free software; you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 3, or (at your option) any later
+# version.
+#
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this package; see the file COPYING.  If not, write to the Free
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+#--code--
+
+export TEXTDOMAIN=services-enable
+export TEXTDOMAINDIR=../locale
+#export TEXTDOMAINDIR=/usr/local/share/locale
+
+. gettext.sh
+
+. ./functions
+
+set -e
+
+if ! check_root ; then
+	PROGNAME=$0
+	echo $(eval_gettext "Script must be run as root, try: sudo \$PROGNAME") ; echo
+	exit 1
+fi
+
+# Take the system root as the first argument and then chuck it. All the rest of the command line arguments will be treated as services to be enabled.
+newroot=$1
+shift
+
+# Take each service and enable it.
+for SERVICE in $@; do
+manage_service "${newroot}" enable "${SERVICE}"
+done
