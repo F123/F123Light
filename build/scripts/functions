@@ -79,7 +79,7 @@ set_locale() {
 	local chroot=$1
 	local locale=$2
 
-	chroot $chroot /bin/bash -c "sed -e \'s/#${locale}/${locale}/\' -i /etc/locale.gen"
+	chroot $chroot /bin/sed -e "s/#${locale}/${locale}/" -i /etc/locale.gen
 	chroot $chroot /bin/bash -c locale-gen
 	echo LANG=$locale > ${chroot}/etc/locale.conf
 	echo LC_COLATE=C >> ${chroot}/etc/locale.conf
