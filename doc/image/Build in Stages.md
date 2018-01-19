@@ -58,13 +58,16 @@ Currently not fully implemented: display usage message.
 Configures the base system, including  the hostname, root password, non-root username/password and system services.
 ## Usage ##
 ./config-base -h  
-sudo ./config-base [-o <hostname] [-r <rootpassword>] [-u <username>] [-p <userpassword>] <systemroot>
+sudo ./config-base [-o <hostname] [-r <rootpassword>] [-l <locale>] [-u <username>] [-p <userpassword>] <systemroot>
 ## Options and Arguments ##
 *-o <hostname>*  
 The hostname of the installed system. Default is alarmpi.
 
 *-r <rootpassword>*  
 The password of the root user. Default is root.
+
+*-l <locale>*
+The system locale (must exist in /etc/locale.gen)
 
 *-u <username>*  
 The username of the non-root user. Default is alarm.
