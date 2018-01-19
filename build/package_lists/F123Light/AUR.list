@@ -1,5 +1,7 @@
-alpine
+pcaudiolib-git
+espeak-ng-git
 chromium-chromevox
+alpine
 kies-git
 python-espeak
 fenrir-git
