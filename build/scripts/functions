@@ -83,6 +83,12 @@ set_locale() {
 	chroot $chroot /bin/bash -c locale-gen
 	echo LANG=$locale > ${chroot}/etc/locale.conf
 	echo LC_COLATE=C >> ${chroot}/etc/locale.conf
+
+	# If there are any Kies menus in the specified locale, copy them to omit the locales from their filenames to allow Kies to find them.
+	test -d ${chroot}/etc/skel/.kies &&
+		for f in "${chroot}/etc/skel/kies/*txt"; do
+			cp "${f%%@${locale}.txt}.txt"
+		done
 } # set_locale
 
 manage_service() {
