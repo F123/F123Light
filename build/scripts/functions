@@ -86,7 +86,7 @@ set_locale() {
 
 	# If there are any Kies menus in the specified locale, copy them to omit the locales from their filenames to allow Kies to find them.
 	if test -d ${chroot}/etc/skel/.kies; then
-		for f in "${chroot}/etc/skel/.kies/*txt"; do
+		for f in ${chroot}/etc/skel/.kies/*txt; do
 			cp "$f" "${f%%@${locale}.txt}.txt"
 		done
 	fi
