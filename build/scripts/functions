@@ -92,7 +92,7 @@ set_locale() {
 		done
 		cd $OLDPWD
 	fi
-if test -d ${chroot}/etc/fenrir }; then
+if test -d ${chroot}/etc/fenrir ]; then
 		cd ${chroot}/etc/fenrir/settings
 		ln -s "settings@${locale}.conf settings.conf
 		cd $OLDPWD
