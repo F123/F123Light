@@ -53,6 +53,10 @@ fi
 
 # All build stage scripts run from the scripts directory underneath the directory where this build script resides.
 # todo: Call the loaded functions as needed rather than calling the stage scripts.
+# First, the current directory must be saved.
+current=$PWD
+
+# Now we enter the directory where the stage scripts live.
 cd scripts
 
 # Check for dependencies and install any that are missing.
@@ -111,7 +115,7 @@ clean_up "$workdir"
 [ -d "${workdir}/pacman-cache" ] || rm -R "$workdir"
 
 # Once all scripts have completed, come back to the directory from which this script was launched.
-cd $OLDPWD
+cd $current
 
 newrootsize=$(ls -hs "${imagename}" | cut -f1 -d' ')
 relativeimage=$(realpath --relative-to="$PWD" "$imagename")
