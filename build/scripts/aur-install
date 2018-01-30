@@ -85,12 +85,12 @@ for package in $(cat "$packagelist"); do
 cd /aur;
 			git clone https://aur.archlinux.org/${package}.git;
 			cd $package;
-			makepkg -A;
+			makepkg -d -A;
 		}"
 	arch-chroot "${newroot}" /bin/bash -c \
 		"{
 			cd /aur/$package;
-			pacman -U *pkg.tar.xz --noconfirm --noprogressbar;
+			yes | pacman -Udd *pkg.tar.xz --noprogressbar;
 		}"
 done
 
