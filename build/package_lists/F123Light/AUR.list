@@ -1,5 +1,6 @@
 chromium-chromevox
 alpine
+espeak-ng-git
 kies-git
 python-espeak
 fenrir-git
