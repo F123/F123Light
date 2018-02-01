@@ -9,6 +9,8 @@ sudo
 base-devel
 alsa-utils
 arch-install-scripts
+bluez
+bluez-tools
 calc
 dialog
 dos2unix
@@ -26,6 +28,7 @@ mpv
 packer
 parted
 pulseaudio
+pulseaudio-bluetooth
 python
 python2
 python-daemonize
@@ -35,6 +38,7 @@ python-pyenchant
 python-pyudev
 python-setuptools
 sox
+sbc
 speech-dispatcher
 units
 wpa_supplicant
@@ -93,6 +97,7 @@ xorg-xvinfo
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+blueberry
 chromium
 firefox
 libreoffice-still
