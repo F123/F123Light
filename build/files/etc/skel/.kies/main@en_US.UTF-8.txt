@@ -1,20 +1,21 @@
 master volume louder,amixer -q set Master 10%+
 master volume softer,amixer -q set Master 10%-
+manage bluetooth devices and settings,startx /usr/bin/kies_bluetooth
 use calculator,calc
 unit conversions,kies units
 email,alpine
 internet browser,lynx
 look up a word in the dictionary,kies_lookup
-look it up in the on line encyclopedia,kies_wiki_search_online
-Browse the internet with Firefox,startx /usr/bin/kies_firefox
-Browse the internet with Chromium,startx /usr/bin/chromium --enable-speech-dispatcher
-Manage mail with Thunderbird,startx /usr/bin/kies_thunderbird
+look up a term in the online encyclopedia,kies_wiki_search_online
+browse the internet with Firefox,startx /usr/bin/kies_firefox
+browse the internet with Chromium,startx /usr/bin/chromium --enable-speech-dispatcher
+manage mail with Thunderbird,startx /usr/bin/kies_thunderbird
 administration menu,kies administration
 search the Internet,kies_search_google
 extract various archives,kies extract_archives
 manage your files,kies files
-Edit text files,kies edit
-Office applications,kies office
+edit text files,kies edit
+office applications,kies office
 convert .pdf to html,pickafile kies_pdfconvert
 audio file conversions,kies audio_conversions
 view a text or html file,pickafile -b lynx
