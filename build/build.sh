@@ -29,7 +29,6 @@ export TEXTDOMAINDIR=./locale
 . gettext.sh
 
 set -e
-
 # Load the common functions
 . scripts/functions
 
@@ -90,6 +89,10 @@ set_password "${workdir}/root" root "${rootpass}"
 
 # Set the system locale
 set_locale $workdir/root $locale
+
+# Install locale specific packages. The file name looks like the configured package list file, but includes an @ sign followed by the locale followed by .list, e.g. packages@sw_KE.list.
+# This file will be ignored if it doesn't exist.
+test -f "${packagelist%%.list}@${locale}.list" && ./pacstrap -l "${packagelist%%.list}@${locale}.list" -c "${workdir}/pacman-cache" "$workdir/root"
 
 # Add the regular user and set its password
 add_user "${workdir}/root" "${username}"
