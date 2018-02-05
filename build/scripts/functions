@@ -105,9 +105,7 @@ manage_service() {
 	local service=$3
 
 	echo $(eval_gettext "Calling systemctl to \${operation} \${service} service")
-	#input="which ${service} && systemctl ${operation} ${service}"
-	#chroot "${chroot_}" /bin/bash -c \"${input}\""
-	chroot "${chroot_}" systemctl "${operation}" "${service}"
+	arch-chroot "${chroot_}" systemctl "${operation}" "${service}"
 } # manage_service
 
 check_root() {
