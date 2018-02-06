@@ -105,7 +105,7 @@ manage_service() {
 	local service=$3
 
 	echo $(eval_gettext "Calling systemctl to \${operation} \${service} service")
-	arch-chroot "${chroot_}" systemctl "${operation}" "${service}"
+	systemd-nspawn -a -q -D "${chroot_}" systemctl "${operation}" "${service}"
 } # manage_service
 
 check_root() {
