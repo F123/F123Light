@@ -55,14 +55,14 @@ fi
 newroot=$1
 
 # turn on MATE accessibility
-chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.interface accessibility true"
-pkill -n dbus-daemon
+systemd-nspawn -a -q -D "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.interface accessibility true"
+#pkill -n dbus-daemon
 
 # Make Orca start automatically
-chroot "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
+systemd-nspawn -a -q -D "${newroot}" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.gnome.desktop.a11y.applications screen-reader-enabled true"
 
-pkill -n dbus-daemon
+#pkill -n dbus-daemon
 
 # Disable screen locking by default
-chroot "$newroot" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.screensaver lock-enabled false"
-pkill -n dbus-daemon
+systemd-nspawn -a -q -D "$newroot" sudo -u \#1000 /bin/bash -c "dbus-launch gsettings set org.mate.screensaver lock-enabled false"
+#pkill -n dbus-daemon
