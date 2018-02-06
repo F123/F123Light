@@ -38,6 +38,8 @@ python-evdev
 python-pyenchant
 python-pyudev
 python-setuptools
+rsync
+screen
 sox
 sbc
 speech-dispatcher
