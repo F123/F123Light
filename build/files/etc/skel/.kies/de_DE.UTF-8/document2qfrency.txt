@@ -1,0 +1,12 @@
+Maryna	Afrikaans,pickafile -b document2qfrency_Maryna_mono
+Maryna	Afrikaans multi-language aware,pickafile -b document2qfrency_Maryna_multi_new
+Kobus	Afrikaans,pickafile -b document2qfrency_Kobus_mono
+Tim	English,pickafile -b document2qfrency_Tim_mono
+Candice	English,pickafile -b document2qfrency_Candice_mono
+Candice	English multi-language aware,pickafile -b document2qfrency_Candice_multi_new
+Sifiso	Zulu,pickafile -b document2qfrency_Sifiso_mono
+Lindiwe	Zulu,pickafile -b document2qfrency_Lindiwe_mono
+Vuyo	Xhosa,pickafile -b document2qfrency_Vuyo_mono
+Zoleka	Xhosa,pickafile -b document2qfrency_Zoleka_mono
+Mmapitsi	Sepedi,pickafile -b document2qfrency_Mmapitsi_mono
+Open-source voices,kies document2wav

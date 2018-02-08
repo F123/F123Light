@@ -1,0 +1,3 @@
+add an item to edit ,Füge einen Eintrag zu Bearbeiten hinzu
+create/edit a text file using Joe,Erstelle/ Bearbeite eine Textdatei mit Joe
+create/edit a text file using Nano,Erstelle/ Bearbeite eine Textdatei mit Nano

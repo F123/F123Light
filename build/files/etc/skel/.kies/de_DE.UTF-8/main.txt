@@ -1,0 +1,27 @@
+master volume louder,Master Lautstärke erhöhen
+master volume softer,Master Lautstärke veringern
+manage bluetooth devices and settings,Verwalte Bluetooth Einstellungen und Geräte
+use calculator,Benutze Taschenrechner
+unit conversions,Einheiten umrechnen
+manage email with Alpine,Verwalte E-Mail mit Alpine
+browse the internet with lynx,Mit lynx im Internet browsen
+look up a word in the dictionary,Schlage ein Wort im Wörterbuch nach
+look up a term in the online encyclopedia,Schlage ein Wort in der online Encyklopedie nach
+browse the internet with Firefox,it Firefox im Internet browsen
+browse the internet with Chromium,it Chrome im Internet browsen
+manage mail with Thunderbird,Verwalte E-Mail mit Thunderbird
+administration menu,Administrations Menü
+search the Internet,Im Internet suchen
+extract various archives,Entpacke Archive
+manage your files,Dateien verwalten
+edit text files,Textdateien bearbeiten
+office applications,Officeanwendungen
+convert .pdf to html,PDF nach HTML Konvertieren
+audio file conversions,Audio Dateien Konvertieren
+view a text or html file,Text oder HTML Datei betrachten
+view an open document format file,Open Document Format öffnen
+view a Microsoft .doc file,Microsoft .doc öffnen
+view a Microsoft .docx file,Microsoft .docx öffnen
+play an audio file,Audiodatei abspielen
+bash shell type exit to return here,Zurück zur Bash
+add an item to the main menu,Füge einen Eintrag zum Haptmenü hinzu

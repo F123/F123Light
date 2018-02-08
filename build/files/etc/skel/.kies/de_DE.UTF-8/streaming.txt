@@ -1,0 +1,9 @@
+Jacaranda FM, mplayer -quiet  http://216.246.37.52:8058/
+Highveld 94.7 , mplayer -quiet http://9323.live.streamtheworld.com:80/FM947AAC_SC
+5FM, mplayer -quiet  mms://196.35.64.63/5fm_22
+RSG, mplayer -quiet  mms://196.33.130.46/rsg_22
+SA fm,mplayer -quiet mms://196.33.130.46/safm_22
+702, mplayer -quiet  http://13303.live.streamtheworld.com:3690/FM702_SC
+Tuks FM, mplayer -quiet  http://216.246.37.52:8024
+Classic fm, mplayer -quiet mms://46.4.25.237/classicfm_22
+radio 2000, mplayer http://216.246.37.51/pbs-radio2000-live

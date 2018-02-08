@@ -1,0 +1,9 @@
+Jacaranda FM, kies_record_stream  http://216.246.37.52:8058/
+Highveld 94.7 , kies_record_stream http://9323.live.streamtheworld.com:80/FM947AAC_SC
+5FM, kies_record_stream  mms://196.35.64.63/5fm_22
+RSG, kies_record_stream  mms://196.33.130.46/rsg_22
+SA fm,kies_record_stream mms://196.33.130.46/safm_22
+702, kies_record_stream  http://13303.live.streamtheworld.com:3690/FM702_SC
+Tuks FM, kies_record_stream  http://216.246.37.52:8024
+Classic fm, kies_record_stream mms://46.4.25.237/classicfm_22
+radio 2000, kies_record_stream http://216.246.37.51/pbs-radio2000-live

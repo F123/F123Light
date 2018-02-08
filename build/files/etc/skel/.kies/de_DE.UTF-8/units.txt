@@ -1,0 +1,15 @@
+gallon to litre,Galione nach Liter
+add an item to unit conversions,Füge einen Eintrag zu Einheiten Umrechnen hinzu
+ounce to gram,Unze nac Gramm
+gram to ounce,Gramm nach Unze
+pound to kilogram,Pfund nach Kilogramm
+kilogram to pound,Kilogramm nach Pfund
+milimeter to inch,Milimeter nach Inch
+inch to milimeter,Inch nach Milimeter
+feet to meter,Fuß nach Meter
+meter to feet,Meter nach Fuß
+miles to kilometer,Meilen nach Kilometer
+kilometer to miles,Kilometer nach Meilen
+Fahrenheit to celsius,Fahrenheit nach Celsius
+Celsius to Fahrenheit,Celsius nach Fahrenheit
+Celsius to Kelvin,Celsius nach Kelvin

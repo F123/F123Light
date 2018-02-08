@@ -1,0 +1,3 @@
+add an item to do calculations ,Füge einen Eintrag zu Berechnen hinzu.
+calculate using calc,Calc zum berechnen benutzen
+calculate using octave,Octave zum berechnen benutzen
