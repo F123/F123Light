@@ -103,6 +103,47 @@ set_locale() {
 	fi
 } # set_locale
 
+setup_wifi() {
+	local root=$1
+	local iface=$2
+	local ap=$3
+	local pass=$4
+
+	# Create the systemd network file
+	mkdir -p $root/etc/systemd/network
+	cat > $root/etc/systemd/network/$iface.network <<-endOfFile
+		[Match]
+		Name=$iface
+
+		[Network]
+		DHCP=yes		
+	endOfFile
+
+	# Configure wpa_supplicant
+	mkdir -p $root/etc/wpa_supplicant
+	cat > $root/etc/wpa_supplicant/wpa_supplicant-$iface.conf <<-endOfFile
+		ctrl_interface=/var/run/wpa_supplicant
+		eapol_version=1
+		ap_scan=1
+		fast_reauth=1
+
+		network={
+		    ssid="$ap"
+		    psk="$pass"
+		    priority=1
+		}
+	endOfFile
+
+	# Enable networking and wifi related services
+	manage_service $root enable systemd-networkd
+	manage_service $root enable wpa_supplicant@$iface
+	manage_service $root enable systemd-resolved
+
+	# Remove any legacy version of resolv.conf and link the version from systemd-resolved
+	rm -f $root/etc/resolv.conf
+	chroot $root /bin/bash -c "ln -sf /var/run/systemd/resolve/resolv.conf /etc/resolv.conf"
+} #setup_wifi
+
 manage_service() {
 	local chroot_=$1
 	local operation=$2
@@ -163,7 +204,6 @@ mount_device() {
 	[ -d "${WORKDIR}" ] || mkdir -p "${WORKDIR}"
 	BOOTP=${DEVICE}1
 	ROOTP=${DEVICE}2
-	#sleep 2
 	mount_partitions ${WORKDIR} ${BOOTP} ${ROOTP} ${BOOTMP} ${ROOTMP}
 } # mount_device
 

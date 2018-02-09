@@ -101,7 +101,7 @@ set_password "${workdir}/root" "${username}" "${userpass}"
 
 # Install packages from the AUR
 # This is optional, and will only run if an AUR package list is set in the config file passed to this script.
-[ $aurlist ] && ./aur-install -l "$aurlist" "${workdir}/root"
+test $aurlist && ./aur-install -l "$aurlist" "${workdir}/root"
 
 # Enable system services
 for service in $services; do
@@ -111,6 +111,9 @@ done
 # Set gsettings keys to enable Orca
 # This is optional, and cannot run on a text only system.
 [ $gsettings ] && ./gsettings "${workdir}/root"
+
+# Configure wifi if network information is present in the configuration file.
+test $wifi && setup_wifi $workdir/root ${wifi[@]}
 
 # Unmount the image file
 clean_up "$workdir"
