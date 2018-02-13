@@ -1,5 +1,5 @@
-master volume louder,amixer -q set Master 10%+
-master volume softer,amixer -q set Master 10%-
+master volume louder,amixer -q -M set PCM 5%+
+master volume softer,amixer -q -M set PCM 5%-
 manage bluetooth devices and settings,startx /usr/bin/kies_bluetooth>&/dev/null
 use calculator,calc
 unit conversions,kies units
