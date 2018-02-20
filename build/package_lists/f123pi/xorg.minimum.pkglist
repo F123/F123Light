@@ -1,6 +1,0 @@
-xorg-server
-xorg-xinit 
-xf86-video-fbdev
-xf86-input-keyboard
-xorg-xkbcomp
-xorg-twm
