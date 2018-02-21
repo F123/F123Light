@@ -1,0 +1,81 @@
+#!/bin/bash
+#
+# Copyright 2018, F123 Consulting, <information@f123.org>
+# Copyright 2018, Kyle, <kyle@free2.ml>
+#
+# This is free software; you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 3, or (at your option) any later
+# version.
+#
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this package; see the file COPYING.  If not, write to the Free
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+#--code--
+
+# the gettext essentials
+export TEXTDOMAIN=update-F123Light
+export TEXTDOMAINDIR=/usr/share/locale
+
+. gettext.sh
+
+set -e
+
+# Due to the nature of system updates, this script may ask for the user's password more than once.
+# Try to minimize user fears with a friendly message.
+echo $(gettext "You are updating your system, which may ask you for your password more than once. Don't be alarmed; this is perfectly normal.")
+
+# Update all packages on the system. Start with ALARM provided packages and versioned AUR packages.
+echo $(gettext "Updating system software...")
+packer -Syu --noedit --noconfirm >& /dev/null
+
+# There's no easy way to check versions of git packages without downloading them, so just update these whether they have new versions or not.
+echo $(gettext "Updating F123Light extra software...")
+for package in espeak-ng-git fenrir-git kies-git; do
+	packer -S $package --noedit --noconfirm >&/dev/null
+done
+
+echo $(gettext "Updating configuration and other files...")
+
+# Clone the F123Light git repository. We need its system and user files, which are stored in build/files.
+git clone -q https://github.com/F123/F123Light.git /tmp/F123Light
+
+ # Copy in the files. All files are to be copied for now, and then /etc/skel should be recopied to the user's $HOME.
+# This will only copy to the $HOME of the user running this update script.
+shopt -s dotglob
+sudo cp -R /tmp/F123Light/build/files/* /
+cp -R /etc/skel/* $HOME
+
+# The temporary files downloaded from the F123Light git repository are no longer needed. Delete the clone.
+rm -Rf /tmp/F123Light
+
+# Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
+# We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
+echo $(gettext "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now?")
+OLDIFS=$IFS
+unset IFS
+while true; do
+	read -rs -N1 -p "$(gettext "Press enter to reboot, or escape to finish the update without rebooting. ")" key
+	echo
+	case $key in
+		$'\n')
+			systemctl reboot
+			break
+		;;
+$'\e')
+			break
+		;;
+		*)
+		;;
+	esac
+done
+IFS=$OLDIFS
+unset $OLDIFS
+echo $(gettext "Update complete.")
