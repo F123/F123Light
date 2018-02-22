@@ -41,6 +41,7 @@ screen
 sox
 speech-dispatcher
 units
+wireless_tools
 wpa_supplicant
 yajl
 xclip
