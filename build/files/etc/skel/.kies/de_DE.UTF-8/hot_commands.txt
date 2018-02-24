@@ -1,9 +1,0 @@
-bring up the SA-Note manual,lynx /var/www/sa-note/index.html
-volume softer,Lautstärke erhöhen
-volume louder,Lautstäreke veringern
-say current time,Sage aktuelle Uhrzeit
-say current date,Sage aktuelles Datum
-show my IP address,Zeige meine IP Adresse
-activate wifi interface,Aktiviere WLan Adapter
-deactivate wifi interface,Deaktiviere WLan Adapter
-reset speech,Sprache zurücksetzen

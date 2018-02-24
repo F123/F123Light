@@ -1,1 +1,0 @@
-add an item to internet setup ,kiesadd internet_setup.txt

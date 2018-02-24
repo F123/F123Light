@@ -1,3 +1,0 @@
-add an item to audio notes ,Füge einen Eintrag zu Audionotizen hinzu
-edit an existing audio file,editiere eine bestehende Audiodatei
-record,Aufnahme

@@ -1,7 +1,0 @@
-synthesize text to wave with Afrikaans Verster male voice,Text nach Wave mit Afrikanischer Verster Männerstimme
-synthesize text to wave with Afrikaans Ewald_biessenbach male voice,Text nach Wave mit Afrikanischer Ewald_biessenbach Männer Stimme
-synthesize text to wave with Afrikaans Nadia voice,Text nach Wave mit Afrikanischer Nadia Stimme
-synthesize text to wave with English male voice,Text nach Wave mit englischer Männerstimme
-synthesize text to wave with English Mel voice,Text nach Wave mit englischer Mel Stimme
-synthesize text to wave with Zulu male voice,Text nach Wave mit Zulu Männerstimme
-synthesize text to wave with Xhosa male voice,Text nach Wave mit Xhosa Männerstimme

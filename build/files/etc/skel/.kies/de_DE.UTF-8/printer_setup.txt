@@ -1,3 +1,0 @@
-add a new printer,Drucker Hinzufügen
-set the default printer,Als standart Drucker setzen
-alternative and advanced printer configuration,Erweiterte Druckereinstellung

@@ -1,3 +1,0 @@
-add an item to do calculations ,kiesadd do_calculations.txt
-calculate using calc,calc -d
-calculate using octave,octave

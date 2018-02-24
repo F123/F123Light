@@ -1,3 +1,0 @@
-LibreOffice Writer,pickafile -b kies_lo_writer_wrapper
-LibreOffice Calc,pickafile -b kies_lo_calc_wrapper
-add an item to Office applications,kiesadd office.txt

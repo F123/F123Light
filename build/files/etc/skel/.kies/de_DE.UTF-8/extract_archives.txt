@@ -1,8 +1,0 @@
-extract .zip archive,Entpacke .zip Archiv
-extract tar.gz or tgz archive,Entpacke tar.gz or tgz Archiv
-extract tar.bz2 archive,Entpacke tar.bz2 Archiv
-extract gzip archive,Entpacke gzip Archiv
-extract bz2 archive,Entpacke bz2 Archiv
-extract 7zip archive,Entpacke 7zip Archiv
-extract .rar archive,Entpacke .rar Archiv
-extract a Microsoft Transport Neutral Encapsulation Format file e.g. winmail.dat,Entpacke eine Microsoft Transport Neutral Encapsulation formatierte Datei z. B. winmail.dat

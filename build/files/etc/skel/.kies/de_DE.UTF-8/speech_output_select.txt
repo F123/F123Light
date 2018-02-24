@@ -1,5 +1,0 @@
-add an item to speech output select ,Füge einen Eintrag zur Sprachausgabeauswahl hinzu
-select HLT Afrikaans voice,Wähle HLT afrikanische Stimme
-Espeak Afrikaans language,Afrikanische espeak Stimme
-Via Voice english language,Via Voice englische Stimme
-espeak english voice,Englische espeak Stimme

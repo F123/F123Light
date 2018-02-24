@@ -1,3 +1,0 @@
-LibreOffice Writer,LibreOffice Writer
-LibreOffice Calc,LibreOffice Calc
-add an item to Office applications,Füge einen Eintrag zu Büroanwendungen hinzu

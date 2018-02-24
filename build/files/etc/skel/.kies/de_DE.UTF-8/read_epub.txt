@@ -1,4 +1,0 @@
-read epub with Afrikaans voice,Lese epub mit afrikanischer Stimme
-read epub with English voice,Lese epub mit englischer Stimme
-read epub with Sepedi voice,Lese epub mit sepedi Stimme
-read epub with Setswana voice,Lese epub mit Setswana Stimme
