@@ -84,12 +84,6 @@ echo -e "\n/dev/mmcblk0p1  /boot   vfat    defaults        0       0" >> $workdi
 # Set the root password
 set_password "${workdir}/root" root "${rootpass}"
 
-# Copy all modified files into the new system
-	cp -R ../files/* "${workdir}/root/"
-
-# Set the system locale
-set_locale $workdir/root $locale
-
 # Install locale specific packages. The file name looks like the configured package list file, but includes an @ sign followed by the locale followed by .list, e.g. packages@sw_KE.list.
 # This file will be ignored if it doesn't exist.
 test -f "${packagelist%%.list}@${locale}.list" && ./pacstrap -l "${packagelist%%.list}@${locale}.list" -c "${workdir}/pacman-cache" "$workdir/root"
@@ -98,10 +92,15 @@ test -f "${packagelist%%.list}@${locale}.list" && ./pacstrap -l "${packagelist%%
 add_user "${workdir}/root" "${username}"
 set_password "${workdir}/root" "${username}" "${userpass}"
 
-
 # Install packages from the AUR
 # This is optional, and will only run if an AUR package list is set in the config file passed to this script.
 test $aurlist && ./aur-install -l "$aurlist" "${workdir}/root"
+
+# Copy any override files into the new system. This overrides any system and user configuration files or scripts installed with packages.
+	cp -Rf ../files/* "${workdir}/root/"
+
+# Set the system locale
+set_locale $workdir/root $locale
 
 # Enable system services
 for service in $services; do
