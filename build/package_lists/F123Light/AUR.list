@@ -1,7 +1,13 @@
-chromium-chromevox
-alpine
-espeak-ng-git
-kies-git
+esound
 python-espeak
+python-pyinsane
+t4k-common
+alpine
+chromium-chromevox
+espeak-ng-git
 fenrir-git
+kies-git
+lios-git
 storebackup
+tuxmath
+tuxtype
