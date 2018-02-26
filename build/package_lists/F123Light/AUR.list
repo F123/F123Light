@@ -1,7 +1,7 @@
 esound
 python-espeak
 python-pyinsane
-t4k-common
+t4kcommon
 alpine
 chromium-chromevox
 espeak-ng-git
@@ -11,3 +11,4 @@ lios-git
 storebackup
 tuxmath
 tuxtype
+files-f123light-git
