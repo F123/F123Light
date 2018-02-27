@@ -97,7 +97,12 @@ set_password "${workdir}/root" "${username}" "${userpass}"
 test $aurlist && ./aur-install -l "$aurlist" "${workdir}/root"
 
 # Copy any override files into the new system. This overrides any system and user configuration files or scripts installed with packages.
-	cp -R ../files/* "${workdir}/root/" || echo "You don't have any private files to override any installed system files."
+cp -R ../files/* "${workdir}/root/" || true
+
+# Always copy the contents of /etc/skel to the home directory of the user that was created earlier
+systemd-nspawn -a -q -D $workdir/root\
+	sudo -u \#1000\
+	bash -c "shopt -s dotglob && cp -R /etc/skel/* \"\$HOME\""
 
 # Set the system locale
 set_locale $workdir/root $locale
