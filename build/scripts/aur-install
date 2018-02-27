@@ -89,8 +89,10 @@ cd /aur;
 		}"
 	systemd-nspawn -a -q -D "${newroot}" /bin/bash -c \
 		"{
+			# It is assumed that someone building an image knows what he/she is doing, and won't install AUR packages that make forced installations or dependency skips dangerous.
+			# That said, some packages have been found not to build properly unless forceably installed to overwrite conflicting files or certain dependencies are skipped.
 			cd /aur/$package;
-			yes | pacman -Udd *pkg.tar.xz --noprogressbar;
+			yes | pacman -Uddf *pkg.tar.xz --noprogressbar;
 		}"
 done
 
