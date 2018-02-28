@@ -99,13 +99,13 @@ test $aurlist && ./aur-install -l "$aurlist" "${workdir}/root"
 # Copy any override files into the new system. This overrides any system and user configuration files or scripts installed with packages.
 cp -R ../files/* "${workdir}/root/" || true
 
+# Set the system locale. This must be set before we can copy user files to $HOME.
+set_locale $workdir/root $locale
+
 # Always copy the contents of /etc/skel to the home directory of the user that was created earlier
 systemd-nspawn -a -q -D $workdir/root\
 	sudo -u \#1000\
 	bash -c "shopt -s dotglob && cp -R /etc/skel/* \"\$HOME\""
-
-# Set the system locale
-set_locale $workdir/root $locale
 
 # Enable system services
 for service in $services; do
