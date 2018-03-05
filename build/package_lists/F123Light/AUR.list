@@ -1,5 +1,6 @@
 python-espeak
 python-pyinsane
+speech-dispatcher-git
 t4kcommon
 alpine
 chromium-chromevox
