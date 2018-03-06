@@ -3,6 +3,7 @@ python-pyinsane
 speech-dispatcher-git
 t4kcommon
 alpine
+bicon-git
 chromium-chromevox
 espeak-ng-git
 fenrir-git

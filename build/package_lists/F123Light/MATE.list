@@ -18,6 +18,8 @@ dialog
 dos2unix
 dotconf
 espeak
+
+fribidi
 git
 imagemagick
 intltool
