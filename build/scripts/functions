@@ -105,10 +105,10 @@ set_locale() {
 	fi
 
 		# Link an install-MBROLA script if there is an installer available for the system language.
-		if test -e "${chroot}/usr/share/install-mbrola/install-MBROLA@${locale"}; then
+		if test -e "${chroot}/usr/share/install-mbrola/install-MBROLA@${locale}"; then
 			cd "${chroot}/usr/share/install-mbrola"
 			ln -s "install-MBROLA@${locale}" "../../bin/install-MBROLA"
-			cd "$OLDPWD"
+			cd $OLDPWD
 		fi
 } # set_locale
 
