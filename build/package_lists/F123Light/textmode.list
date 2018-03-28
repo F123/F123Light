@@ -42,6 +42,7 @@ python-daemonize
 python-dbus
 python-evdev
 python-pyenchant
+python-pyte
 python-pyudev
 python-setuptools
 rsync

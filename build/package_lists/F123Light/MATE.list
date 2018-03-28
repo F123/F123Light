@@ -42,6 +42,7 @@ python-daemonize
 python-dbus
 python-evdev
 python-pyenchant
+python-pyte
 python-pyudev
 python-setuptools
 rsync
@@ -115,7 +116,6 @@ marco
 mate-backgrounds
 mate-control-center
 mate-desktop
-mate-dialogs
 mate-icon-theme
 mate-menus
 mate-notification-daemon
@@ -141,7 +141,6 @@ mate-icon-theme-faenza
 mate-media
 mate-screensaver
 mate-system-monitor
-mate-system-tools
 mate-terminal
 mate-user-share
 mate-utils
