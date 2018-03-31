@@ -119,6 +119,11 @@ done
 # Configure wifi if network information is present in the configuration file.
 test $wifi && setup_wifi $workdir/root ${wifi[@]}
 
+# Touch the firstboot file. It will be deleted by the firstboot script that looks for it.
+systemd-nspawn -a -q -D $workdir/root\
+	sudo -u \#1000\
+	bash -c "touch \$HOME/.firstboot"
+
 # Unmount the image file
 clean_up "$workdir"
 # Keep the work directory if a pacman cache exists, otherwise remove it
