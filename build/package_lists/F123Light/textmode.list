@@ -9,6 +9,7 @@ sudo
 base-devel
 alsa-utils
 arch-install-scripts
+aspell
 audiofile
 bluez
 bluez-tools
