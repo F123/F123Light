@@ -55,7 +55,7 @@ sdl_net
 sdl_pango
 sdl_ttf
 sox
-speech-dispatcher
+speech-dispatcher-git
 tesseract
 units
 wireless_tools
