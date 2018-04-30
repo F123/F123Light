@@ -19,6 +19,7 @@ dialog
 dos2unix
 dotconf
 espeak-ng-extended-git
+fenrir-git
 fribidi
 git
 imagemagick
@@ -43,6 +44,7 @@ python2
 python-cairo
 python-daemonize
 python-dbus
+python-espeak
 python-evdev
 python-pyenchant
 python-pyte
