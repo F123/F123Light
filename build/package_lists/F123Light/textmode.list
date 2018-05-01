@@ -31,6 +31,7 @@ libltdl
 libnewt
 libpulse
 liburcu
+lios-git
 lynx
 mpv
 packer
@@ -47,6 +48,7 @@ python-dbus
 python-espeak
 python-evdev
 python-pyenchant
+python-pyinsane
 python-pyte
 python-pyudev
 python-setuptools
