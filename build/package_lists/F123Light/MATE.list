@@ -50,6 +50,7 @@ python-pyte
 python-pyudev
 python-setuptools
 rsync
+sbc
 screen
 sdl_image
 sdl_mixer
@@ -58,6 +59,7 @@ sdl_pango
 sdl_ttf
 sox
 speech-dispatcher-git
+storebackup
 tesseract
 units
 wireless_tools
