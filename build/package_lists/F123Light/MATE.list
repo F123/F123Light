@@ -60,7 +60,9 @@ sdl_ttf
 sox
 speech-dispatcher-git
 storebackup
+t4k-common
 tesseract
+tuxmath
 units
 wireless_tools
 wpa_supplicant
