@@ -62,7 +62,7 @@ sdl_ttf
 sox
 speech-dispatcher-git
 storebackup
-t4k-common
+t4kcommon
 tesseract
 tuxmath
 units
