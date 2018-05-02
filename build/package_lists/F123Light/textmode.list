@@ -35,7 +35,6 @@ libnewt
 libpulse
 liburcu
 lios-git
-lynx
 mpv
 packer
 pandoc
@@ -57,7 +56,6 @@ python-pyudev
 python-setuptools
 rsync
 sbc
-screen
 sdl_image
 sdl_mixer
 sdl_net
@@ -67,9 +65,11 @@ sox
 speech-dispatcher-git
 storebackup
 t4kcommon
+tmux
 tesseract
 tuxmath
 units
+w3m
 wireless_tools
 wpa_supplicant
 yajl
