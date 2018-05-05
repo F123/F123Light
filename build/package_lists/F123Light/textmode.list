@@ -35,6 +35,7 @@ libnewt
 libpulse
 liburcu
 lios-git
+magic-wormhole
 mpv
 packer
 pandoc
@@ -54,6 +55,7 @@ python-pyinsane
 python-pyte
 python-pyudev
 python-setuptools
+rpi-clone-git
 rsync
 sbc
 sdl_image
