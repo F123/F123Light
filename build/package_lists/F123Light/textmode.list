@@ -42,6 +42,7 @@ packer
 pandoc
 parted
 pcaudiolib-git
+pdmenu-git
 pulseaudio
 pulseaudio-bluetooth
 python
