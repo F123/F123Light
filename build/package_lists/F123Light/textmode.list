@@ -37,12 +37,14 @@ libnewt
 libpulse
 liburcu
 lios-git
+magic-wormhole
 mpv
 mutt
 packer
 pandoc
 parted
 pcaudiolib-git
+pdmenu-git
 pulseaudio
 pulseaudio-bluetooth
 python
@@ -57,6 +59,7 @@ python-pyinsane
 python-pyte
 python-pyudev
 python-setuptools
+rpi-clone-git
 rsync
 sbc
 sdl_image
