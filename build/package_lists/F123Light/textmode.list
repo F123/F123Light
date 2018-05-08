@@ -15,6 +15,7 @@ bluez
 bluez-tools
 calc
 chromium-chromevox
+configure-wifi-git
 cuneiform
 dialog
 dos2unix
@@ -24,6 +25,7 @@ fenrir-git
 fleacollar-git
 fribidi
 git
+hunspell
 imagemagick
 intltool
 json-c
