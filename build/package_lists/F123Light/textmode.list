@@ -13,6 +13,7 @@ aspell
 audiofile
 bluez
 bluez-tools
+bsd-games
 calc
 chromium-chromevox
 configure-wifi-git
@@ -29,7 +30,6 @@ hunspell
 imagemagick
 intltool
 json-c
-kies-git
 libao
 libksane
 libltdl
