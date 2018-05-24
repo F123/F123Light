@@ -101,10 +101,10 @@ test $aurlist && ./aur-install -l "$aurlist" "${workdir}/root"
 rm -Rf /tmp/files-F123Light
 
 # Start by cloning the files-F123Light repository.
-git clone -q -b $(git branch | grep \* | cut -f2 -d \ ) https://github.com/F123/files-F123Light.git /tmp/F123Light
+git clone -q -b $(git branch | grep \* | cut -f2 -d \ ) https://github.com/F123/files-F123Light.git /tmp/files-F123Light
 
  # Copy in the files.
-cp -R /tmp/F123Light/files/* "${workdir}/root/"
+cp -R /tmp/files-F123Light/files/* "${workdir}/root/"
 
 # remove the temporary files again.
 rm -R /tmp/files-F123Light
