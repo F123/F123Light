@@ -97,6 +97,19 @@ set_password "${workdir}/root" "${username}" "${userpass}"
 test $aurlist && ./aur-install -l "$aurlist" "${workdir}/root"
 
 # Copy any override files into the new system. This overrides any system and user configuration files or scripts installed with packages.
+# Remove any stale temporary files related to the file repository
+rm -Rf /tmp/files-F123Light
+
+# Start by cloning the files-F123Light repository.
+git clone -q -b $(git branch | grep \* | cut -f2 -d \ ) https://github.com/F123/files-F123Light.git /tmp/F123Light
+
+ # Copy in the files.
+cp -R /tmp/F123Light/files/* "${workdir}/root/"
+
+# remove the temporary files again.
+rm -R /tmp/files-F123Light
+
+# Now copy any override files from this repository.
 cp -R ../files/* "${workdir}/root/" || true
 
 # Set the system locale. This must be set before we can copy user files to $HOME.
