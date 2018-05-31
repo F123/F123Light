@@ -72,6 +72,7 @@ units
 wireless_tools
 wpa_supplicant
 yajl
+zramswap
 xclip
 xf86-video-vesa
 xorg-bdftopcf
