@@ -31,7 +31,6 @@ hunspell
 imagemagick
 intltool
 json-c
-kies-git
 libao
 libksane
 libltdl
@@ -39,6 +38,7 @@ libnewt
 libpulse
 liburcu
 lios-git
+lxterminal
 magic-wormhole
 mpv
 mumble-snapshot-minimal
