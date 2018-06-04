@@ -62,6 +62,7 @@ python-pyinsane
 python-pyte
 python-pyudev
 python-setuptools
+ripit
 rpi-clone-git
 rsync
 sbc
