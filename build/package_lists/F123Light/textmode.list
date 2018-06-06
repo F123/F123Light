@@ -16,7 +16,6 @@ bluez-tools
 bsd-games
 calc
 cmus
-chromium-chromevox
 configure-wifi-git
 cuneiform
 dialog
@@ -142,8 +141,7 @@ xorg-xwud
 youtube-dl
 youtube-viewer
 zramswap
-blueberry
-chromium
+blueman
 firefox
 libreoffice-still
 orca
