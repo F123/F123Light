@@ -11,6 +11,7 @@ alsa-utils
 arch-install-scripts
 aspell
 audiofile
+bash-completion
 bluez
 bluez-tools
 calc
