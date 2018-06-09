@@ -4,6 +4,7 @@
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2017, Mike Ray, <mike.ray@btinternet.com>
 # Copyright 2018, Kyle, <kyle@free2.ml>
+# Copyright 2018, StormDragon, <storm_dragon@linux-a11y.org>
 #
 # This is free software; you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free
@@ -61,7 +62,7 @@ add_user() {
 	local username=$2
 
 	echo $(eval_gettext "Add user \${username}")
-	input="useradd -m -g users -G wheel,storage,power,uucp,audio -s /bin/bash ${username}"
+	input="useradd -m -g users -G wheel,storage,power,uucp,audio,games -s /bin/bash ${username}"
 	chroot "${chroot_}" /bin/bash -c "${input}"
 } # add_user
 
