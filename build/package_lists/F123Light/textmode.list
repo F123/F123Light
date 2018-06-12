@@ -48,6 +48,8 @@ pandoc
 parted
 pcaudiolib-git
 pdmenu-git
+pidgin
+pidgin-otr
 pulseaudio
 pulseaudio-bluetooth
 python
