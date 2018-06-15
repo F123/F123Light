@@ -23,6 +23,7 @@ dos2unix
 dotconf
 espeak-ng-extended-git
 fribidi
+fake-hwclock
 fenrir
 git
 hunspell
