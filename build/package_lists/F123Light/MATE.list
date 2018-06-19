@@ -14,6 +14,7 @@ audiofile
 bash-completion
 bluez
 bluez-tools
+bluez-utils
 calc
 chromium-chromevox
 cronie
