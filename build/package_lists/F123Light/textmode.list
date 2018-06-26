@@ -52,6 +52,9 @@ pandoc
 parted
 pcaudiolib-git
 pdmenu-git
+perl-json-xs
+perl-text-charwidth
+perl-term-readline-gnu
 pidgin
 pidgin-otr
 pulseaudio
