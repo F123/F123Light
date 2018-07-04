@@ -105,9 +105,6 @@ git clone -q -b $(git branch | grep \* | cut -f2 -d \ ) https://github.com/F123/
 
  # Copy in the files.
 cp -R /tmp/files-F123Light/files/* "${workdir}/root/"
-# Set the languaged used by speech-dispatcher
-* This will become unnecessary if speech-dispatcher starts handling locales properly.
-sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${locale//_/-}/" -e 's/.*Language \(.*\)/\L\1/'  "${workdir}/root/etc/speech-dispatcher/speechd.conf"
 
 # remove the temporary files again.
 rm -R /tmp/files-F123Light
