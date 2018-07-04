@@ -97,7 +97,7 @@ set_locale() {
 	fi
 
 # Set the languaged used by speech-dispatcher
-* This will become unnecessary if speech-dispatcher starts handling locales properly.
+# This will become unnecessary if speech-dispatcher starts handling locales properly.
 sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${locale//_/-}/" -e 's/.*Language \(.*\)/\L\1/' "${chroot}/etc/speech-dispatcher/speechd.conf"
 
 # Link the Fenrir settings file from the specified locale if it exists.
