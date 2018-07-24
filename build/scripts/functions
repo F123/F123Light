@@ -105,13 +105,13 @@ case "${locale::5}" in
 esac
 
 # Link the Fenrir settings file from the specified locale if it exists.
-	if test -d ${chroot}/etc/fenrirscreenreader; then
-		cd ${chroot}/etc/fenrirscreenreader/settings
+	#if test -d ${chroot}/etc/fenrirscreenreader; then
+		#cd ${chroot}/etc/fenrirscreenreader/settings
 		# Fenrir ships with its own settings file that defaults to English. It must be removed to make room for the symlink.
-		rm -f settings.conf
-		ln -s "settings@${locale}.conf" "settings.conf"
-		cd $OLDPWD
-	fi
+		#rm -f settings.conf
+		#ln -s "settings@${locale}.conf" "settings.conf"
+		#cd $OLDPWD
+	#fi
 
 		# Link an install-mbrola script if there is an installer available for the system language.
 		if test -e "${chroot}/usr/lib/install-mbrola/install-mbrola@${locale}"; then
