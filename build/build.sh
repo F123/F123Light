@@ -125,6 +125,9 @@ for service in $services; do
 	manage_service "${workdir}/root" enable "${service}"
 done
 
+# Download package databases
+download_package_databases $workdir/root
+
 # Set gsettings keys to enable Orca
 # This is optional, and cannot run on a text only system.
 [ $gsettings ] && ./gsettings "${workdir}/root"

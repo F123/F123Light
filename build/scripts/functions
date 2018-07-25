@@ -162,6 +162,13 @@ setup_wifi() {
 	chroot $root /bin/bash -c "ln -sf /var/run/systemd/resolve/resolv.conf /etc/resolv.conf"
 } #setup_wifi
 
+download_package_databases () {
+	local chroot=$1
+
+	# Be sure the full package database for all repositories has been downloaded
+	chroot $1 pacman -Syy
+} # download_package_databases
+
 manage_service() {
 	local chroot_=$1
 	local operation=$2
