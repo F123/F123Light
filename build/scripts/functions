@@ -166,7 +166,7 @@ download_package_databases () {
 	local chroot=$1
 
 	# Be sure the full package database for all repositories has been downloaded
-	chroot $1 pacman -Syy
+	systemd-nspawn -a -q -D $1 pacman -Syy
 } # download_package_databases
 
 manage_service() {
