@@ -7,6 +7,7 @@ raspberrypi-bootloader
 raspberrypi-firmware
 sudo
 base-devel
+alpine
 alsa-utils
 arch-install-scripts
 aspell
@@ -29,7 +30,6 @@ espeak-ng-extended-git
 f123-docs
 fake-hwclock
 fenrir
-fleacollar-git
 fribidi
 git
 hunspell
@@ -47,7 +47,6 @@ lxterminal
 magic-wormhole
 mpv
 mumble-snapshot-minimal
-mutt
 packer
 pandoc
 parted
