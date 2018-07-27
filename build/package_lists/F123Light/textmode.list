@@ -13,6 +13,7 @@ arch-install-scripts
 aspell
 audiofile
 bash-completion
+bashtuner
 bluez
 bluez-tools
 bluez-utils
