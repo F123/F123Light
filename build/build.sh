@@ -127,6 +127,7 @@ done
 
 # Download package databases
 download_package_databases $workdir/root
+set_fake_hwclock $workdir/root
 
 # Set gsettings keys to enable Orca
 # This is optional, and cannot run on a text only system.
