@@ -169,6 +169,13 @@ download_package_databases () {
 	systemd-nspawn -a -q -D $1 pacman -Syy
 } # download_package_databases
 
+set_fake_hwclock () {
+	local chroot=$1
+
+	# Set an initial system time.
+	systemd-nspawn -a -q -D $1 /usr/lib/systemd/scripts/fake-hwclock.sh save
+}
+
 manage_service() {
 	local chroot_=$1
 	local operation=$2
