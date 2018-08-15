@@ -84,10 +84,11 @@ sdl_ttf
 sox
 speech-dispatcher-git
 storebackup
-t4kcommon
+t4kcommon-git
 tmux
 tesseract
-tuxmath
+tuxmath-git
+tuxtype-git
 units
 w3m
 wireless_tools
