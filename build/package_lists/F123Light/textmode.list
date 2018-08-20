@@ -67,6 +67,8 @@ python-daemonize
 python-dbus
 python-espeak
 python-evdev
+python2-pip
+python-pip
 python-pyenchant
 python-pyinsane
 python-pyte
