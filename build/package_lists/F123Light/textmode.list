@@ -75,6 +75,7 @@ python-pyinsane
 python-pyte
 python-pyudev
 python-setuptools
+python-xlsx2csv
 ripit
 rpi-clone-git
 rsync
