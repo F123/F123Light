@@ -19,6 +19,7 @@ bluez-tools
 bluez-utils
 bsd-games
 calc
+catdoc
 cmus
 configure-wifi-git
 cronie
@@ -92,11 +93,11 @@ tesseract
 tuxmath-git
 tuxtype-git
 units
+unzip
 w3m
 wireless_tools
 wpa_supplicant
 yajl
-zramswap
 jwm
 xclip
 xdg-user-dirs
@@ -155,6 +156,7 @@ xorg-xwud
 yad
 youtube-dl
 youtube-viewer
+zip
 zramswap
 blueman
 firefox
