@@ -7,11 +7,11 @@ raspberrypi-bootloader
 raspberrypi-firmware
 sudo
 base-devel
-alpine
 alsa-utils
 arch-install-scripts
 aspell
 audiofile
+automount-usb-git
 bash-completion
 bashtuner
 bluez
