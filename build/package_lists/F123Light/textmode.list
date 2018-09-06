@@ -88,6 +88,7 @@ sdl_mixer
 sdl_net
 sdl_pango
 sdl_ttf
+socat
 sox
 speech-dispatcher-git
 storebackup
