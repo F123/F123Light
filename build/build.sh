@@ -141,6 +141,10 @@ systemd-nspawn -a -q -D $workdir/root\
 	sudo -u \#1000\
 	bash -c "touch \$HOME/.firstboot"
 
+# Write a system timestamp.
+# This timestamp will determine which incremental updates apply to this image
+echo "$(date +%y%m%d%H%M)" > $workdir/root/etc/build-timestamp
+
 # Unmount the image file
 clean_up "$workdir"
 # Keep the work directory if a pacman cache exists, otherwise remove it
