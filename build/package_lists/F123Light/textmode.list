@@ -161,8 +161,8 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 yad
-youtube-dl
-youtube-viewer
+youtube-dl-git
+youtube-viewer-git
 zip
 zramswap
 blueman
