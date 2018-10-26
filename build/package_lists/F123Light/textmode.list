@@ -54,7 +54,6 @@ mpv
 mumble-snapshot-minimal
 mutt
 nanotts-git
-packer
 pandoc
 parted
 pcaudiolib-git
@@ -163,6 +162,7 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 yad
+yay
 youtube-dl-git
 youtube-viewer-git
 zip
