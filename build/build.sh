@@ -113,7 +113,7 @@ rm -R /tmp/files-F123Light
 cp -R ../files/* "${workdir}/root/" || true
 
 # Set the system locale. This must be set before we can copy user files to $HOME.
-set_locale $workdir/root $locale
+setup_locales $workdir/root $defaultlocale $locales
 
 # Always copy the contents of /etc/skel to the home directory of the user that was created earlier
 systemd-nspawn -a -q -D $workdir/root\
