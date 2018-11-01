@@ -85,6 +85,7 @@ setup_locales() {
 
 	for l in $locales; do
         chroot $chroot /bin/sed -e "s/#${l}/${l}/" -i /etc/locale.gen
+    done
 	chroot $chroot /bin/bash -c locale-gen
 	echo LANG=$defaultlocale > ${chroot}/etc/locale.conf
 	echo LC_COLLATE=C >> ${chroot}/etc/locale.conf
