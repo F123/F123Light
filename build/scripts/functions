@@ -76,50 +76,28 @@ set_password() {
 	chroot "${chroot_}" /bin/bash -c "${input}"
 } # set_password
 
-set_locale() {
+setup_locales() {
 	local chroot=$1
-	local locale=$2
+    shift
+	local defaultlocale=$1
+    shift
+    locale locales=$@
 
-	chroot $chroot /bin/sed -e "s/#${locale}/${locale}/" -i /etc/locale.gen
+	for l in $locales; do
+        chroot $chroot /bin/sed -e "s/#${l}/${l}/" -i /etc/locale.gen
 	chroot $chroot /bin/bash -c locale-gen
-	echo LANG=$locale > ${chroot}/etc/locale.conf
+	echo LANG=$defaultlocale > ${chroot}/etc/locale.conf
 	echo LC_COLLATE=C >> ${chroot}/etc/locale.conf
-
-	# Link each Kies menu in the .kies subdirectory named for the specified locale into .kies. If the locale directory doesn't exist, link from C.
-	if test -d ${chroot}/etc/skel/.kies/$locale; then
-		cd $chroot/etc/skel/.kies/$locale
-		ln *txt ..
-		cd $OLDPWD
-	elif test -d $chroot/etc/skel/.kies/C; then
-		cd $chroot/etc/skel/.kies/C
-		ln *txt ..
-		cd $OLDPWD
-	fi
 
 # Set the languaged used by speech-dispatcher
 # This will become unnecessary if speech-dispatcher starts handling locales properly.
-case "${locale::5}" in
+case "${defaultlocale::5}" in
     "en_US") ;&
     "pt_BR") sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${locale//_/-}/" -e 's/\(.*Language\) \(.*\)\..*/\1\L\2/' "${chroot}/etc/speech-dispatcher/speechd.conf" ;;
     *) sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${locale::2}/" "${chroot}/etc/speech-dispatcher/speechd.conf" ;;
 esac
 
-# Link the Fenrir settings file from the specified locale if it exists.
-	#if test -d ${chroot}/etc/fenrirscreenreader; then
-		#cd ${chroot}/etc/fenrirscreenreader/settings
-		# Fenrir ships with its own settings file that defaults to English. It must be removed to make room for the symlink.
-		#rm -f settings.conf
-		#ln -s "settings@${locale}.conf" "settings.conf"
-		#cd $OLDPWD
-	#fi
-
-		# Link an install-mbrola script if there is an installer available for the system language.
-		if test -e "${chroot}/usr/lib/install-mbrola/install-mbrola@${locale}"; then
-			cd "${chroot}/usr/bin"
-			ln -sf "/usr/lib/install-mbrola/install-mbrola@${locale}" "install-mbrola"
-			cd $OLDPWD
-		fi
-} # set_locale
+} # setup_locales
 
 setup_wifi() {
 	local root=$1
@@ -134,7 +112,7 @@ setup_wifi() {
 		Name=$iface
 
 		[Network]
-		DHCP=yes		
+		DHCP=yes
 	endOfFile
 
 	# Configure wpa_supplicant
@@ -320,7 +298,7 @@ prepare_device() {
 	local ROOTMP=${4}
 	local BLOCKCOUNT=${5}
 	local BLOCKSIZE=${6}
-	local SPLIT=${7}	   
+	local SPLIT=${7}
 
 	echo $(gettext "Making the work directory if it doesn't exist") ; echo
 	[ -d ${WORKDIR} ] || mkdir -p "${WORKDIR}"
@@ -344,7 +322,7 @@ prepare_device() {
 } # prepare_device
 
 remove_loop_devices() {
-	local WORKDIR=${1}	
+	local WORKDIR=${1}
 
 	echo $(gettext "Removing loop devices") ; echo
 	FIRSTPART=$(head -1 ${WORKDIR}/rpi-image-tool-mount-points | cut -f2 -d:)
