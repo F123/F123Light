@@ -81,7 +81,7 @@ setup_locales() {
     shift
 	local defaultlocale=$1
     shift
-    locale locales=$@
+    local locales=$@
 
 	for l in $locales; do
         chroot $chroot /bin/sed -e "s/#${l}/${l}/" -i /etc/locale.gen
