@@ -94,7 +94,7 @@ setup_locales() {
 # This will become unnecessary if speech-dispatcher starts handling locales properly.
 case "${defaultlocale::5}" in
     "en_US") ;&
-    "pt_BR") sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${locale//_/-}/" -e 's/\(.*Language\) \(.*\)\..*/\1\L\2/' "${chroot}/etc/speech-dispatcher/speechd.conf" ;;
+    "pt_BR") sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${defaultlocale//_/-}/" -e 's/\(.*Language\) \(.*\)\..*/\1\L\2/' "${chroot}/etc/speech-dispatcher/speechd.conf" ;;
     *) sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${locale::2}/" "${chroot}/etc/speech-dispatcher/speechd.conf" ;;
 esac
 
