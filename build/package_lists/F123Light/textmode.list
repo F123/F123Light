@@ -32,6 +32,7 @@ espeak-ng-extended-git
 f123-docs
 fake-hwclock
 fenrir
+filestorm
 fleacollar-git
 fribidi
 git
@@ -86,7 +87,6 @@ mbrola-voices-tr2
 mbrola-voices-us1
 mbrola-voices-us2
 mbrola-voices-us3
-mc
 mpv
 mumble-snapshot-minimal
 mutt
