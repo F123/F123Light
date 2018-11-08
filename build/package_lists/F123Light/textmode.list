@@ -98,6 +98,7 @@ pdmenu-git
 perl-json-xs
 perl-text-charwidth
 perl-term-readline-gnu
+pianobar
 pidgin
 pidgin-otr
 pulseaudio
