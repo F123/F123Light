@@ -82,7 +82,7 @@ newroot=$1; shift
 [[ -r "${packagelist}" ]] || die "Package list ${packagelist} is not readable"
 
 
-mapfile -t packages < "${packagelist}"
+grep -v \# | grep -v '^$' | mapfile -t packages < "${packagelist}"
 
 [[ -d $newroot ]] || die "%s is not a directory" "$newroot"
 if ! mountpoint -q "${newroot}" && (( ! directory )); then
