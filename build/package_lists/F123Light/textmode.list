@@ -49,7 +49,6 @@ libpulse
 liburcu
 lios-git
 lxterminal
-magic-wormhole
 mbrola-git
 mbrola-voices-af1
 mbrola-voices-ar1
@@ -110,6 +109,7 @@ python-daemonize
 python-dbus
 python-espeak
 python-evdev
+python-magic-wormhole
 python2-pip
 python-pip
 python-pyenchant
