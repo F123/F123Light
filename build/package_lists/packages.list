@@ -122,6 +122,7 @@ ripit
 rpi-clone-git
 rsync
 sbc
+sc-im-git
 sdl_image
 sdl_mixer
 sdl_net
