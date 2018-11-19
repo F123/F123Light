@@ -97,6 +97,7 @@ pdmenu-git
 perl-json-xs
 perl-text-charwidth
 perl-term-readline-gnu
+pi-bluetooth
 pianobar
 pidgin
 pidgin-otr
