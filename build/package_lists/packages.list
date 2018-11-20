@@ -1,11 +1,14 @@
 base
-linux-raspberrypi
-linux-raspberrypi-headers
+firmware-raspberrypi
+linux-aarch64
+linux-aarch64-headers
+#linux-raspberrypi
+#linux-raspberrypi-headers
 ntp
 openssh
-raspberrypi-bootloader
-raspberrypi-firmware
+raspberrypi-bootloader-x
 sudo
+uboot-raspberrypi
 base-devel
 alsa-utils
 arch-install-scripts
@@ -90,7 +93,7 @@ mpv
 mumble-snapshot-minimal
 mutt
 nanotts-git
-pandoc
+#pandoc
 parted
 pcaudiolib-git
 pdmenu-git
