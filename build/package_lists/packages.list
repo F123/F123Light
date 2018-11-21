@@ -119,7 +119,7 @@ python-pyte
 python-pyudev
 python-setuptools
 python-xlsx2csv
-hrvoice-git
+rhvoice-git
 ripit
 rpi-clone-git
 rsync
